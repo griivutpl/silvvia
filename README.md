@@ -13,4 +13,4 @@ La calificación de estrellas de la carretera (SR) es un sistema utilizado por i
 - Angie Vicente,     Email: acvicente2@utpl.edu.ec git : acvicente2
 - Jhandry Camacho,   Email: jrcamacho2@utpl.edu.ec
 - Jefferson Montoya, Email: jdmontoya4@utpl.edu.ec
-- Darwin Villamagua, Email: dvvillamagua1@utpl.edu.ec, git:DarwinVillamagua
+- Darwin Villamagua, Email: dvvillamagua1@utpl.edu.ec, git: DarwinVillamagua
