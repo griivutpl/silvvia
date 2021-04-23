@@ -1,23 +1,23 @@
 
 function [D1,P1,D2,P2,D3,P3,D4,P4,D5,P5,D6,P6,D7,P7,D8,P8,D9,P9,D10,P10,D11,P11,D12,P12,D13,P13,D14,P14,D15,P15,D16,P16,D17,P17,D18,P18,D19,P19,D20,P20] = Usuarios(Y)
 %Ocupante del vehículo
-S1=find(Y.Ocupante_del_vehiculo==1);
+S1=find(Y.Ocupante_de_vehiculo==1);
 D1=(1/1000)*sum(Y.Distancia(S1));
 P1=(D1*100)/(1/1000*sum(Y.Distancia));
 
-S2=find(Y.Ocupante_del_vehiculo==2);
+S2=find(Y.Ocupante_de_vehiculo==2);
 D2=(1/1000)*sum(Y.Distancia(S2));
 P2=(D2*100)/(1/1000*sum(Y.Distancia));            
 
-S3=find(Y.Ocupante_del_vehiculo==3);
+S3=find(Y.Ocupante_de_vehiculo==3);
 D3=(1/1000)*sum(Y.Distancia(S3));
 P3=(D3*100)/(1/1000*sum(Y.Distancia));
             
-S4=find(Y.Ocupante_del_vehiculo==4);
+S4=find(Y.Ocupante_de_vehiculo==4);
 D4=(1/1000)*sum(Y.Distancia(S4));
 P4=(D4*100)/(1/1000*sum(Y.Distancia));
   
-S5=find(Y.Ocupante_del_vehiculo==5);
+S5=find(Y.Ocupante_de_vehiculo==5);
 D5=(1/1000)*sum(Y.Distancia(S5));
 P5=(D5*100)/(1/1000*sum(Y.Distancia));
             
