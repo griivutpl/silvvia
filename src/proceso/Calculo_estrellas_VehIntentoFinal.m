@@ -1357,6 +1357,7 @@ end
     end
     end
     end
+    end
 end
 if alumbrad==1
     alumbrado1=alumbrado(1,1);
@@ -1417,6 +1418,7 @@ end
 end
 end
     end 
+    end
     end
     end
     end
@@ -2007,6 +2009,7 @@ end
 end
 end
     end 
+    end
 end
 if tipointe==1
     tipointer5=tipointer(1,6);
@@ -2051,6 +2054,7 @@ end
 end
 end
     end 
+    end
 end
 %Intersección del volumen de la carretera
 if volinte==1
@@ -2656,6 +2660,7 @@ end
 end
 end
     end 
+    end
 end
 if infbic==1
     infbici3=infbici(1,2);
@@ -3190,6 +3195,7 @@ end
 end
 end
 end
+    end
     end
     end
 end
