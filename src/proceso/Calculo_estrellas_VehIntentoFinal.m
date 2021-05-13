@@ -2,26 +2,22 @@ function [EstVehiculo,EstMotocicleta,EstCiclista,EstPeaton,EstVehicul,EstMoto,Es
 %0.Clasificacion por estrellas para ocupante de vehiculo
 %%Salida del camino (lado del conductor)
 %Ancho carril
-%Tipo de area 2=Rural; 1=Urbano
+%Tipo de area 1=Rural; 2=Urbano
 tipoare=x(38);
 anchocarri=x(13);
-if tipoare==2 && anchocarri==1 %Ancho (≥ 3,25 m)
-   anchocarril=1;
-else if tipoare==2 && anchocarri==2 %Medio (≥ 2,75 m a < 3,25 m)
-   anchocarril=1.2;
-else if tipoare==2 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
-   anchocarril=1.5;
-    end
-    end
-end
 if tipoare==1 && anchocarri==1 %Ancho (≥ 3,25 m)
    anchocarril=1;
-else if tipoare==1 && anchocarri==2 %Medio (≥ 2,75 m a < 3,25 m)
+elseif tipoare==1 && anchocarri==2 %Medio (≥ 2,75 m a < 3,25 m)
+   anchocarril=1.2;
+else tipoare==1 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
+   anchocarril=1.5;
+end
+if tipoare==2 && anchocarri==1 %Ancho (≥ 3,25 m)
+   anchocarril=1;
+elseif tipoare==2 && anchocarri==2 %Medio (≥ 2,75 m a < 3,25 m)
    anchocarril=1.05;
-else if tipoare==1 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
+else tipoare==2 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
    anchocarril=1.1;
-    end
-    end
 end
 %Curvatura
 T2=[1 1 1 1;1.8 2 2 1.8;3.5 3.8 3.8 3.5;6 6.5 6.5 6];
@@ -78,9 +74,8 @@ disp('2 = Deficiente')
 delineacio=x(19);
 if delineacio==1
     delineacion=1;
-else if delineacio==2
+else delineacio==2
     delineacion=1.2;
-    end
 end
 %Bandas sonoras en el espaldón
 %T5=[1.25;1]
@@ -89,12 +84,10 @@ disp('2 = Presente')
 bandasonorae=x(5);
 if bandasonorae==1
     bandasonoraes=1.25;
-else if bandasonorae==2
+else bandasonorae==2
     bandasonoraes=1;
-    end
 end
 %Estado de la superficie de la vía
-%%Cojo A lo largo peaton= Alo Largo Ciclista
 T6=[1 1 1 1 1;1.2 1.25 1.2 1.2 1.25;1.4 1.5 1.4 1.4 1.5];
 disp('1 = Buena')
 disp('2 = Regular')
@@ -116,16 +109,14 @@ if estadosuperfici==3
     end
 end
 %Pendiente
-T7=[1 1 1 1;1.2 1.2 1.2 1.2;1.7 1.7 1.7 1.7];
+%T7=[1 1 1 1;1.2 1.2 1.2 1.2;1.7 1.7 1.7 1.7];
 pendient=x(16);
 if pendient==3 %≥ 10 
    pendiente=1.7;
-else if pendient==2 %7,5  a 10 
+elseif pendient==2 %7,5  a 10 
         pendiente=1.2
-else if pendient==1 %0 % a < 7,5 %
+else pendient==1 %0 % a < 7,5 %
         pendiente=1
-    end
-    end
 end
 %Resistencia al deslizamiento
 T8=[1 1 1 1;1.4 1.6 1.4 1.6;2 2.5 2 2.5;3 4 3 4;5.5 7.5 5.5 7.5];
@@ -315,12 +306,10 @@ end
 flujoex=x(30);
 if flujoex>=18000
     flujoext=0.5;
-else if flujoex>=2000&flujoex<18000
+elseif flujoex>=2000&flujoex<18000
     flujoext=0.5
-    else if flujoex<2000
+else flujoex<2000
             flujoext=0
-        end
-    end
 end
 %Transitabilidad media
 disp('1 = Transitable')
@@ -328,207 +317,149 @@ disp('2 = No saturada')
 transitabilidad=x(53);
 if transitabilidad==1
    transitabilida=1;
-else if transitabilidad==2
+elseif transitabilidad==2
    transitabilida=0;
-    end
 end
 %Velocidad de operacion (aqui toma el +10km/h)
 veloperacio=x(52);
- if veloperacio==150
+if veloperacio==150
     veloperacion=1;
- else if veloperacio==145
+elseif veloperacio==145
     veloperacion=0.91;
- else if veloperacio==140
+elseif veloperacio==140
          veloperacion=0.81;
- else if veloperacio==135
+elseif veloperacio==135
          veloperacion=0.73;
- else if veloperacio==130
+elseif veloperacio==130
          veloperacion=0.66;
- else if veloperacio==125
+elseif veloperacio==125
          veloperacion=0.58;
- else if veloperacio==120
+elseif veloperacio==120
         veloperacion=0.51;
- else if veloperacio==115
+elseif veloperacio==115
          veloperacion=0.44;
- else if veloperacio==110
+elseif veloperacio==110
          veloperacion=0.39;
- else if veloperacio==105
+elseif veloperacio==105
          veloperacion=0.34;
- else if veloperacio==100
+elseif veloperacio==100
          veloperacion=0.29;
- else if veloperacio==95
+elseif veloperacio==95
          veloperacion=0.25;  
- else if veloperacio==90
+elseif veloperacio==90
          veloperacion=0.21;
- else if veloperacio==85
+elseif veloperacio==85
          veloperacion=0.18;
- else if veloperacio==80
+elseif veloperacio==80
          veloperacion=0.15;
- else if veloperacio==75
+elseif veloperacio==75
          veloperacion=0.11;
- else if veloperacio==70
+elseif veloperacio==70
          veloperacion=0.1;
- else if veloperacio==65
+elseif veloperacio==65
          veloperacion=0.08;
- else if veloperacio==60
+elseif veloperacio==60
          veloperacion=0.06;
- else if veloperacio==55
+elseif veloperacio==55
          veloperacion=0.05;
- else if veloperacio==50
+elseif veloperacio==50
          veloperacion=0.04;
- else if veloperacio==45
+elseif veloperacio==45
          veloperacion=0.03;
- else if veloperacio==40
+elseif veloperacio==40
          veloperacion=0.02;
- else if veloperacio==35
+elseif veloperacio==35
          veloperacion=0.01;
- else if veloperacio==30
+else veloperacio==30
          veloperacion=0;
- end
-     end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
- end
+end
  %%1.Clasificación por Estrellas para la salida del camino (lado del conductor)
- if curvatur==1
+if curvatur==1
      curvatura2=curvatura(1,1);
- else if curvatur==2
-         curvatura2=curvatura(1,1);
- else if curvatur==3
-         curvatura2=curvatura(1,1);
- else if curvatur==4
-         curvatura2=curvatura(1,1);
- end
- end
- end
- end
- if calidadcurv==1
+elseif curvatur==2
+        curvatura2=curvatura(1,1);
+elseif curvatur==3
+        curvatura2=curvatura(1,1);
+else curvatur==4
+      curvatura2=curvatura(1,1);
+end
+if calidadcurv==1
     calidadcurva2=calidadcurva(1,1);
- else if calidadcurv==2
+elseif calidadcurv==2
     calidadcurva2=calidadcurva(1,1);
- else  if calidadcurv==3
+else calidadcurv==3
     calidadcurva2=calidadcurva(1,1);
- end
-     end
- end
+end
 if estadosuperfici==1
     estadosuperficie2=estadosuperficie(1,1);
-else if estadosuperfici==2
+elseif estadosuperfici==2
     estadosuperficie2=estadosuperficie(1,1);
-    else if estadosuperfici==3
+else estadosuperfici==3
     estadosuperficie2=estadosuperficie(1,1);
-        end
-    end
 end
 if resdeslizamient==1
    resdeslizamiento2=resdeslizamiento(1,1);
-else if resdeslizamient==2
+elseif resdeslizamient==2
    resdeslizamiento2=resdeslizamiento(1,1);
-    else if resdeslizamient==3
+elseif resdeslizamient==3
    resdeslizamiento2=resdeslizamiento(1,1);
-        else if resdeslizamient==4
+elseif resdeslizamient==4
    resdeslizamiento2=resdeslizamiento(1,1);
-            else if resdeslizamient==5
+else resdeslizamient==5
    resdeslizamiento2=resdeslizamiento(1,1);
-end
-end
-end
-    end
 end
 if distconducto==1
   distconductor2=distconductor(1,1);
-else if distconducto==2
+elseif distconducto==2
   distconductor2=distconductor(1,1);
-    else if distconducto==3
+elseif distconducto==3
   distconductor2=distconductor(1,1);
-        else if distconducto==4
+else distconducto==4
   distconductor2=distconductor(1,1);
-end
-end
-    end
 end
 if objconducto==1
  objconductor2=objconductor(1,1);
-else if objconducto==2
+elseif objconducto==2
  objconductor2=objconductor(1,1);
-else if objconducto==3
+elseif objconducto==3
  objconductor2=objconductor(1,1);
- else if objconducto==4
+elseif objconducto==4
  objconductor2=objconductor(1,1);
- else if objconducto==5
+elseif objconducto==5
  objconductor2=objconductor(1,1);
- else if objconducto==6
+elseif objconducto==6
  objconductor2=objconductor(1,1);
- else if objconducto==7
+elseif objconducto==7
  objconductor2=objconductor(1,1);
- else if objconducto==8
+elseif objconducto==8
  objconductor2=objconductor(1,1);
- else if objconducto==9
+elseif objconducto==9
  objconductor2=objconductor(1,1);
- else if objconducto==10
+elseif objconducto==10
  objconductor2=objconductor(1,1);
- else if objconducto==11
+elseif objconducto==11
  objconductor2=objconductor(1,1);
- else if objconducto==12
+elseif objconducto==12
  objconductor2=objconductor(1,1);
- else if objconducto==13
+elseif objconducto==13
  objconductor2=objconductor(1,1);
- else if objconducto==14
+elseif objconducto==14
  objconductor2=objconductor(1,1);
- else if objconducto==15
+elseif objconducto==15
  objconductor2=objconductor(1,1);
- else if objconducto==16
+elseif objconducto==16
  objconductor2=objconductor(1,1);
- else if objconducto==17
+else objconducto==17
  objconductor2=objconductor(1,1);
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-    end
-    end
 end
 if anchoespaldo==1
   anchoespaldon2=anchoespaldon(1,1);
-else if anchoespaldo==2
+elseif anchoespaldo==2
   anchoespaldon2=anchoespaldon(1,1);
-    else if anchoespaldo==3
+elseif anchoespaldo==3
   anchoespaldon2=anchoespaldon(1,1);
-        else if anchoespaldo==4
+else anchoespaldo==4
   anchoespaldon2=anchoespaldon(1,1);
-end
-end
-    end
 end
 A=anchocarril*curvatura2*calidadcurva2*delineacion*bandasonoraes*estadosuperficie2*pendiente*resdeslizamiento2*distconductor2*objconductor2*anchoespaldon2*flujoext*veloperacion*transitabilida
 %%Salida del camino (lado del copiloto)
@@ -682,78 +613,56 @@ if anchoespaldonco==4
 end
 if distcopilot==1
   distcopiloto2=distcopiloto(1,1);
-else if distcopilot==2
+elseif distcopilot==2
   distcopiloto2=distcopiloto(1,1);
-    else if distcopilot==3
+elseif distcopilot==3
   distcopiloto2=distcopiloto(1,1);
-        else if  distcopilot==4
+else  distcopilot==4
   distcopiloto2=distcopiloto(1,1);
-end
-end
-    end
 end
 if objcopilot==1
  objcopiloto2=objcopiloto(1,1);
-else if objcopilot==2
+elseif objcopilot==2
  objcopiloto2=objcopiloto(1,1);
-else if objcopilot==3
+elseif objcopilot==3
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==4
+elseif objcopilot==4
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==5
+elseif objcopilot==5
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==6
+elseif objcopilot==6
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==7
+elseif objcopilot==7
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==8
+elseif objcopilot==8
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==9
+elseif objcopilot==9
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==10
+elseif objcopilot==10
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==11
+elseif objcopilot==11
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==12
+elseif objcopilot==12
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==13
+elseif objcopilot==13
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==14
+elseif objcopilot==14
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==15
+elseif objcopilot==15
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==16
+elseif objcopilot==16
  objcopiloto2=objcopiloto(1,1);
- else if objcopilot==17
+else objcopilot==17
  objcopiloto2=objcopiloto(1,1);
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-     end
-    end
-    end
 end
 if anchoespaldonco==1
   anchoespaldoncop2=anchoespaldon(1,1);
-else if anchoespaldonco==2
+elseif anchoespaldonco==2
   anchoespaldoncop2=anchoespaldon(1,1);
-    else if anchoespaldonco==3
+elseif anchoespaldonco==3
   anchoespaldoncop2=anchoespaldon(1,1);
-        else if anchoespaldonco==4
+else anchoespaldonco==4
   anchoespaldoncop2=anchoespaldon(1,1);
-end
-end
-    end
 end
 B=anchocarril*curvatura2*calidadcurva2*delineacion*bandasonoraes*estadosuperficie2*pendiente*resdeslizamiento2*distcopiloto2*objcopiloto2*anchoespaldoncop2*flujoext*veloperacion
 %%Choque frontal (pérdida de control)
@@ -763,9 +672,8 @@ disp('2 = Presente')
 bandassonora=x(11);
 if bandassonora==1
     bandassonoras=1.20;
-else if bandassonora==2
-        bandassonoras=1;
-    end
+else bandassonora==2
+     bandassonoras=1;
 end
 %Tipo de mediana
 T13=[0 0 1 0.7;0 0 1 0.7;2 0 1 0.7;10 0 1 0.7;35 0 1 0.7;80 0 1 0.7;90 0 1.6 0.7;77 25 3 1;90 0 2.7 1;83 82.5 2.4 1;100 100 3 1;0 0 1 0.7;0 0 1 0.7;95 100 2.7 1;0 0 1 0.7];
@@ -863,148 +771,103 @@ end
 %Influencia del flujo externo
 if flujoex<8001
     flujoext1=0.1622;
-else if flujoex>=8001&flujoex<16001
+elseif flujoex>=8001&flujoex<16001
         flujoext1=0.3244259331;
-else if flujoex>=16001&flujoex<24001
+elseif flujoex>=16001&flujoex<24001
         flujoext1=0.434158234;
-else if flujoex>=24001&flujoex<32001
+elseif flujoex>=24001&flujoex<32001
         flujoext1=0.5422206955;
-else if flujoex>=32001&flujoex<40001
+elseif flujoex>=32001&flujoex<40001
         flujoext1=0.651237351;
-else if flujoex>=40001&flujoex<48001
+elseif flujoex>=40001&flujoex<48001
         flujoext1=0.7585841671;
-else if flujoex>=48001&flujoex<56001
+elseif flujoex>=48001&flujoex<56001
         flujoext1=0.8134503175;       
-else if flujoex>=56001
+else flujoex>=56001
         flujoext1=0.868316468; 
-            end
-end
-    end
-        end
-    end
-    end
-    end
 end
 %Velocidad de operacion (aqui toma el -10km/h)
- if veloperacio==150
+if veloperacio==150
         veloperacion1=1;
- else if veloperacio==145
+elseif veloperacio==145
          veloperacion1=0.91;
-else if veloperacio==140
+elseif veloperacio==140
          veloperacion1=0.81;
-else if veloperacio==135
+elseif veloperacio==135
          veloperacion1=0.73;
-else if veloperacio==130
+elseif veloperacio==130
          veloperacion1=0.66;
-else if veloperacio==125
+elseif veloperacio==125
          veloperacion1=0.58;
-else if veloperacio==120
+elseif veloperacio==120
         veloperacion1=0.51;
-else if veloperacio==115
+elseif veloperacio==115
          veloperacion1=0.44;
-else if veloperacio==110
+elseif veloperacio==110
          veloperacion1=0.39;
-else if veloperacio==105
+elseif veloperacio==105
          veloperacion1=0.34;
-else if veloperacio==100
+elseif veloperacio==100
          veloperacion1=0.29;
-else if veloperacio==95
+elseif veloperacio==95
          veloperacion1=0.25;   
-else if veloperacio==90
+elseif veloperacio==90
          veloperacion1=0.21;
-else if veloperacio==85
+elseif veloperacio==85
          veloperacion1=0.18;
-else if veloperacio==80
+elseif veloperacio==80
          veloperacion1=0.15;
-else if veloperacio==75
+elseif veloperacio==75
          veloperacion1=0.11;
-else if veloperacio==70
+elseif veloperacio==70
          veloperacion1=0.1;
-else if veloperacio==65
+elseif veloperacio==65
          veloperacion1=0.08;
-else if veloperacio==60
+elseif veloperacio==60
          veloperacion1=0.06;
-else if veloperacio==55
+elseif veloperacio==55
          veloperacion1=0.05;
-else if veloperacio==50
+elseif veloperacio==50
          veloperacion1=0.04;
-else if veloperacio==45
+elseif veloperacio==45
          veloperacion1=0.03;
-else if veloperacio==40
+elseif veloperacio==40
          veloperacion1=0.02;
-else if veloperacio==35;
+elseif veloperacio==35;
          veloperacion1=0.01
-else if veloperacio==30
+else veloperacio==30
          veloperacion1=0;
 end
-end
-end
-end
-end
-end
-end
-    end
-    end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
- end
 if tipomedian==1
  tipomediana2=tipomediana(1,1);
-else if tipomedian==2
+elseif tipomedian==2
  tipomediana2=tipomediana(1,1);
- else if tipomedian==3
+elseif tipomedian==3
  tipomediana2=tipomediana(1,1);
- else if tipomedian==4
+elseif tipomedian==4
  tipomediana2=tipomediana(1,1);
- else if tipomedian==5
+elseif tipomedian==5
  tipomediana2=tipomediana(1,1);
- else if tipomedian==6
+elseif tipomedian==6
  tipomediana2=tipomediana(1,1);
- else if tipomedian==7
+elseif tipomedian==7
  tipomediana2=tipomediana(1,1);
- else if tipomedian==8
+elseif tipomedian==8
  tipomediana2=tipomediana(1,1);
- else if tipomedian==9
+elseif tipomedian==9
  tipomediana2=tipomediana(1,1);
- else if tipomedian==10
+elseif tipomedian==10
  tipomediana2=tipomediana(1,1);
- else if tipomedian==11
+elseif tipomedian==11
  tipomediana2=tipomediana(1,1);
- else if tipomedian==12
+elseif tipomedian==12
  tipomediana2=tipomediana(1,1);
- else if tipomedian==13
+elseif tipomedian==13
  tipomediana2=tipomediana(1,1);
- else if tipomedian==14
+elseif tipomedian==14
  tipomediana2=tipomediana(1,1);
- else if tipomedian==15
+else tipomedian==15
  tipomediana2=tipomediana(1,1);
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 end 
 C=anchocarril*curvatura2*calidadcurva2*delineacion*bandassonoras*estadosuperficie2*pendiente*resdeslizamiento2*tipomediana2*flujoext1*veloperacion1*transitabilida
 %%Clasificación por Estrellas Choque frontal (adelantamiento) 
@@ -1014,9 +877,8 @@ disp('2 = Ausente')
 velodiferenci=x(50);
 if velodiferenci==1
     velodiferencial=1.2;
-else if velodiferenci==2
-        velodiferencial=1;
-    end
+else velodiferenci==2
+     velodiferencial=1;
 end
 %Numero de carriles
 T14=[1 1;0.02 2.8;0.01 5.2;0.01 8;0.5 1.8;0.02 4];
@@ -1054,63 +916,45 @@ if ncarrile==5
 end
 if ncarrile==1
     ncarriles2=ncarriles(1,1);
-else if ncarrile==2
+elseif ncarrile==2
         ncarriles2=ncarriles(1,1);
-else if ncarrile==3
+elseif ncarrile==3
         ncarriles2=ncarriles(1,1);
-else if ncarrile==4
+elseif ncarrile==4
         ncarriles2=ncarriles(1,1);        
-else if ncarrile==5
+else ncarrile==5
         ncarriles2=ncarriles(1,1);        
-    end
-    end
-    end
-    end
 end
 if tipomedian==1
  tipomediana3=tipomediana(1,2);
-else if tipomedian==2
+elseif tipomedian==2
  tipomediana3=tipomediana(1,2);
- else if tipomedian==3
+elseif tipomedian==3
  tipomediana3=tipomediana(1,2);
- else if tipomedian==4
+elseif tipomedian==4
  tipomediana3=tipomediana(1,2);
- else if tipomedian==5
+elseif tipomedian==5
  tipomediana3=tipomediana(1,2);
- else if tipomedian==6
+elseif tipomedian==6
  tipomediana3=tipomediana(1,2);
- else if tipomedian==7
+elseif tipomedian==7
  tipomediana3=tipomediana(1,2);
- else if tipomedian==8
+elseif tipomedian==8
  tipomediana3=tipomediana(1,2);
- else if tipomedian==9
+elseif tipomedian==9
  tipomediana3=tipomediana(1,2);
- else if tipomedian==10
+elseif tipomedian==10
  tipomediana3=tipomediana(1,2);
- else if tipomedian==11
+elseif tipomedian==11
  tipomediana3=tipomediana(1,2);
- else if tipomedian==12
+elseif tipomedian==12
  tipomediana3=tipomediana(1,2);
- else if tipomedian==13
+elseif tipomedian==13
  tipomediana3=tipomediana(1,2);
- else if tipomedian==14
+elseif tipomedian==14
  tipomediana3=tipomediana(1,2);
- else if tipomedian==15
+else tipomedian==15
  tipomediana3=tipomediana(1,2);
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
 end
 D=pendiente*resdeslizamiento2*velodiferencial*ncarriles2*tipomediana3*0*veloperacion1
 %%Interseccion 
@@ -1245,12 +1089,10 @@ disp('3 = No aplica')
 calinte=x(28);
 if calinte==1
     calinter=1;
-else if calinte==2
+elseif calinte==2
      calinter=1.2;
-else  if calinte==3
+else calinte==3
       calinter=1;
-end
-    end
 end
 %Alumbrado publico
 T17=[1 1 1;1.15 1.25 1.25];
@@ -1274,9 +1116,8 @@ disp('2 = Deficiente')
 distvisua=x(24);
 if distvisua==1
     distvisual=1;
-else if distvisua==2
-    distvisual=1.42;
-    end
+else distvisua==2
+     distvisual=1.42;
 end
 %Canalización de la intersección
 disp('1 = Ausente')
@@ -1284,9 +1125,8 @@ disp('2 = Presente')
 caninte=x(26);
 if caninte==1
     caninter=1.2;
-else if caninte==2
-    caninter=1;
-    end
+else caninte==2
+     caninter=1;
 end
 %Gestión de la velocidad / Calmante del tráfico
 T19=[1.25 1.25 1.25;1 1 1];
@@ -1295,133 +1135,95 @@ disp('2 = Presente')
 gestvel=x(51);
 if gestvel==1
     gestvelo=1.25;
-else if gestvel==2 
-    gestvelo=1;
-    end
+else gestvel==2 
+     gestvelo=1;
 end
 if tipointe==1
     tipointer2=tipointer(1,1);
-else if tipointe==2
+elseif tipointe==2
     tipointer2=tipointer(1,1);
-else if tipointe==3
+elseif tipointe==3
     tipointer2=tipointer(1,1);
-else if tipointe==4
+elseif tipointe==4
     tipointer2=tipointer(1,1);
-else if tipointe==5
+elseif tipointe==5
     tipointer2=tipointer(1,1);
-else if tipointe==6
+elseif tipointe==6
     tipointer2=tipointer(1,1);
-else if tipointe==7
+elseif tipointe==7
     tipointer2=tipointer(1,1);
-else if tipointe==8
+elseif tipointe==8
     tipointer2=tipointer(1,1);
-else if tipointe==9
+elseif tipointe==9
     tipointer2=tipointer(1,1);
-else if tipointe==10
+elseif tipointe==10
     tipointer2=tipointer(1,1);
-else if tipointe==11
+elseif tipointe==11
     tipointer2=tipointer(1,1);
-else if tipointe==12
+elseif tipointe==12
     tipointer2=tipointer(1,1);
-else if tipointe==13
+elseif tipointe==13
     tipointer2=tipointer(1,1);
-else if tipointe==14
+elseif tipointe==14
     tipointer2=tipointer(1,1);
-else if tipointe==15
+elseif tipointe==15
     tipointer2=tipointer(1,1);
-else if tipointe==16
+elseif tipointe==16
     tipointer2=tipointer(1,1);
-else if tipointe==17
+elseif tipointe==17
     tipointer2=tipointer(1,1);
-else if tipointe==18
+elseif tipointe==18
     tipointer2=tipointer(1,1);
-else if tipointe==19
+elseif tipointe==19
     tipointer2=tipointer(1,1);
-else if tipointe==20
+else tipointe==20
     tipointer2=tipointer(1,1);
-end
-end
-end
-end
-end
-end
-end
-end
-end
-    end
-    end
-end
-end
-    end 
-    end
-    end
-    end
-    end
 end
 if alumbrad==1
     alumbrado1=alumbrado(1,1);
-else if  alumbrad==2
-   alumbrado1=alumbrado(1,1);
-    end
+else  alumbrad==2
+      alumbrado1=alumbrado(1,1);
 end
 if tipointe==1
     tipointer3=tipointer(1,2);
-else if tipointe==2
+elseif tipointe==2
     tipointer3=tipointer(1,2);
-else if tipointe==3
+elseif tipointe==3
     tipointer3=tipointer(1,2);
-else if tipointe==4
+elseif tipointe==4
     tipointer3=tipointer(1,2);
-else if tipointe==5
+elseif tipointe==5
     tipointer3=tipointer(1,2);
-else if tipointe==6
+elseif tipointe==6
     tipointer3=tipointer(1,2);
-else if tipointe==7
+elseif tipointe==7
     tipointer3=tipointer(1,2);
-else if tipointe==8
+elseif tipointe==8
     tipointer3=tipointer(1,2);
-else if tipointe==9
+elseif tipointe==9
     tipointer3=tipointer(1,2);
-else if tipointe==10
+elseif tipointe==10
     tipointer3=tipointer(1,2);
-else if tipointe==11
+elseif tipointe==11
     tipointer3=tipointer(1,2);
-else if tipointe==12
+elseif tipointe==12
     tipointer3=tipointer(1,2);
-else if tipointe==13
+elseif tipointe==13
     tipointer3=tipointer(1,2);
-else if tipointe==14
+elseif tipointe==14
     tipointer3=tipointer(1,2);
-else if tipointe==15
+elseif tipointe==15
     tipointer3=tipointer(1,2);
-else if tipointe==16
+elseif tipointe==16
     tipointer3=tipointer(1,2);
-else if tipointe==17
+elseif tipointe==17
     tipointer3=tipointer(1,2);
-else if tipointe==18
+elseif tipointe==18
     tipointer3=tipointer(1,2);
-else if tipointe==19
+elseif tipointe==19
     tipointer3=tipointer(1,2);
-else if tipointe==20
+else tipointe==20
     tipointer3=tipointer(1,2);
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-end
-    end 
-    end
-    end
-    end
-    end
-    end
 end
 %Intersección del volumen de la carretera
 volinte=x(27)
@@ -1998,6 +1800,7 @@ end
 end
 end
 end
+    end
 end
 end
 end
@@ -2042,6 +1845,7 @@ end
 end
 end
 end
+    end
 end
 end
 end
@@ -2212,16 +2016,16 @@ end
     end
 end
 %%%Clasificación por Estrellas para ciclistas
-%Infraestructura para bicicletas
+%Infraestructura para bicicletas 
 T21=[0 1 0;0.1 1 90;12 1 90;20 1.2 90;17 1.2 90;19 1 90;1 1 90;16 1.2 90;17 1.2 90;18 1.2 90];
-disp('1 = Vía fuera de la carretera con barrera')
-disp('2 = Vía fuera de la carretera sin barrera')
-disp('3 = Carril en la carretera')
+disp('1 = Ciclovía fuera de la carretera con barrera')
+disp('2 = Ciclovía fuera de la carretera sin barrera')
+disp('3 = Ciclovía en la carretera')
 disp('4 = Ninguno')
-disp('5 = Extremo derecho extra-ancho (?4.2 m)')
-disp('6 = Vía compartida con señalamiento vertical')
-disp('7 = Ciclovía de uso compartidO')
-disp('8 = Berma pavimentada > = 2.4 m')
+disp('5 = Carril extra fuera de la calzada (≥4.2 m)')
+disp('6 = Vía compartida con señalización vertical')
+disp('7 = Ciclovía de uso compartido')
+disp('8 = Berma pavimentada ≥ 2.4 m')
 disp('9 = Berma pavimentada 1.0 m < ancho <2.4 m')
 disp('10 = Berma pavimentado 0m < ancho <= 1.0m')
 infbic=x(46);
@@ -2277,42 +2081,31 @@ if infbic==10
 end
 if infbic==1
     infbici1=infbici(1,1);
-else if infbic==2
+elseif infbic==2
         infbici1=infbici(1,1);
-else if infbic==3
+elseif infbic==3
         infbici1=infbici(1,1);
-else if infbic==4
+elseif infbic==4
         infbici1=infbici(1,1);
-else if infbic==5
+elseif infbic==5
         infbici1=infbici(1,1);
-else if infbic==6
+elseif infbic==6
         infbici1=infbici(1,1);
-else if infbic==7
+elseif infbic==7
         infbici1=infbici(1,1);
-else if infbic==8
+elseif infbic==8
         infbici1=infbici(1,1);
-else if infbic==9
+elseif infbic==9
         infbici1=infbici(1,1);
-else if infbic==10
+else infbic==10
         infbici1=infbici(1,1);
-    end
-    end
-    end
-    end
-    end
-    end
-    end
-    end
-    end
 end
 if estadosuperfici==1
     estadosuperficie4=estadosuperficie(1,4);
-else if estadosuperfici==2
+elseif estadosuperfici==2
     estadosuperficie4=estadosuperficie(1,4);
-    else if estadosuperfici==3
+else estadosuperfici==3
     estadosuperficie4=estadosuperficie(1,4);
-    end
-    end
 end
 %Estacionamiento de vehiculos
 disp('1 = Ninguno')
@@ -2324,27 +2117,21 @@ disp('6 = Dos lados (presencia de peatones o de ciclistas)')
 estve=x(21);
 if estve==1
     estveh=1
-else if estve==2
+elseif estve==2
     estveh=1.2
-    else if estve==3
+elseif estve==3
     estveh=1.33
-    else if estve==4
+elseif estve==4
     estveh=1
-    else if estve==5
+elseif estve==5
     estveh=1
-    else if estve==6
+else estve==6
     estveh=1
-        end
-        end
-        end
-        end
-    end
 end
 if alumbrad==1
     alumbrado2=alumbrado(1,2);
-else if  alumbrad==2
+else  alumbrad==2
    alumbrado2=alumbrado(1,2);
-    end
 end
 if infbic==1
     infbici2=infbici(1,3);
@@ -2473,7 +2260,7 @@ end
     end
     end
 end
-M=infbici1*curvatura2*calidadcurva3*distvisual*anchocarril*delineacion*pendiente*estadosuperficie4*resdeslizamiento3*gestvelo*bandasonoraes*estveh*alumbrado2*infbici2*veloperacionbi*flujoext5
+M=infbici1*curvatura2*calidadcurva3*distvisual*anchocarril*delineacion*pendiente*estadosuperficie4*resdeslizamiento3*gestvelo*bandasonoraes*estveh*alumbrado2*infbici2*veloperacionbi*flujoext5;
 %%Salida de via
 if estadosuperfici==1
     estadosuperficie5=estadosuperficie(1,5);
@@ -2654,7 +2441,8 @@ end
 end
 end
 end
-end
+    end
+    end
     end 
 end
 if infbic==1
@@ -2708,7 +2496,11 @@ else if volinte==7
     end
     end
 end
-%Infraestructura para cruce peatonal (tmabien inspeccionada)
+%Infraestructura para cruce peatonal (inspeccionada)
+disp('1 = Supervisor de cruce en zona escolar presente en horario de entrada y salida de la escuela')
+disp('2 = Supervisor de cruce en zona escolar no presente')
+disp('3 = No aplica (no hay escuela en el lugar)')
+supescolar=x(48)
 disp('1 = Infraestructura a desnivel')
 disp('2 = Semaforizada con refugio')
 disp('3 = Semaforizada sin refugio')
@@ -2716,48 +2508,82 @@ disp('4 = No semaforizada. señalizada con pintura y con refugio')
 disp('5 = No semaforizada. señalizada con pintura y sin refugio')
 disp('6 = Solo refugio')
 disp('7 =  Sin infraestructura')
-disp('8 = Instalación separada a nivel - presencia de cerca para peatones') 
 disp('9 = Cruce demarcado elevado. sin semáforo. con refugio')
 disp('10 = Cruce demarcado elevado. sin semáforo. sin refugio')
 disp('11 = Cruce no demarcado elevado. con refugio')
 disp('12 = Cruce no demarcado elevado. sin refugio')
-infcrucepe=x(39);
-if infcrucepe==1
+infcrucepe=x(39)
+if infcrucepe==1 && supescolar==3
     infcrucep=0.4;
-else if infcrucepe==2
+elseif infcrucepe==2 && supescolar==3
     infcrucep=1;
-else if infcrucepe==3
+elseif infcrucepe==3 && supescolar==3
     infcrucep=1.25;
-else if infcrucepe==4
+elseif infcrucepe==4 && supescolar==3
     infcrucep=3.8;
-else if infcrucepe==5
+elseif infcrucepe==5 && supescolar==3
     infcrucep=4.8;
-else if infcrucepe==6
+elseif infcrucepe==6 && supescolar==3
     infcrucep=5.1;
-else if infcrucepe==7
-    infcrucep=6.7;    
-else if infcrucepe==8
-    infcrucep=0;     
-else if infcrucepe==9
+elseif infcrucepe==7 && supescolar==3
+    infcrucep=6.7;        
+elseif infcrucepe==9 && supescolar==3
     infcrucep=2.5;    
-else if infcrucepe==10
+elseif infcrucepe==10 && supescolar==3
     infcrucep=3.2;   
-else if infcrucepe==11
+elseif infcrucepe==11 && supescolar==3
     infcrucep=3.4;    
-else if infcrucepe==12
+else infcrucepe==12 && supescolar==3
     infcrucep=4.5;    
-end    
 end
+if infcrucepe==1 && supescolar==1
+    infcrucep=0.3;
+elseif infcrucepe==2 && supescolar==1
+    infcrucep=0.95;
+elseif infcrucepe==3 && supescolar==1
+    infcrucep=1.2;
+elseif infcrucepe==4 && supescolar==1
+    infcrucep=1;
+elseif infcrucepe==5 && supescolar==1
+    infcrucep=1.25;
+elseif infcrucepe==6 && supescolar==1
+    infcrucep=3.8;
+elseif infcrucepe==7 && supescolar==1
+    infcrucep=4.8;        
+elseif infcrucepe==9 && supescolar==1
+    infcrucep=1;    
+elseif infcrucepe==10 && supescolar==1
+    infcrucep=1;   
+elseif infcrucepe==11 && supescolar==1
+    infcrucep=2.5;    
+else infcrucepe==12 && supescolar==1
+    infcrucep=3.2;    
 end
+if infcrucepe==1 && supescolar==2
+    infcrucep=0.4;
+elseif infcrucepe==2 && supescolar==2
+    infcrucep=1;
+elseif infcrucepe==3 && supescolar==2
+    infcrucep=1.25;
+elseif infcrucepe==4 && supescolar==2
+    infcrucep=3.8;
+elseif infcrucepe==5 && supescolar==2
+    infcrucep=4.8;
+elseif infcrucepe==6 && supescolar==2
+    infcrucep=5.1;
+elseif infcrucepe==7 && supescolar==2
+    infcrucep=6.7;        
+elseif infcrucepe==9 && supescolar==2
+    infcrucep=2.5;    
+elseif infcrucepe==10 && supescolar==2
+    infcrucep=3.2;   
+elseif infcrucepe==11 && supescolar==2
+    infcrucep=3.4;    
+else infcrucepe==12 && supescolar==2
+    infcrucep=4.5;    
 end
-end
-    end
-    end
-    end
-    end
-    end
-    end
-end
+%Supervisor en el cruce de zona escolar
+%supescolar=x(48)
 O=tipointer6*calinter*pendiente*resdeslizamiento3*infbici3*alumbrado2*distvisual*caninter*gestvelo*tipointer5*veloperacionbi*volinter3*infcrucep;
 porcicli=x(35);
 if porcicli==1
@@ -3119,6 +2945,7 @@ else if tipomedian==2
  tipomediana5=tipomediana(1,3);
  else if tipomedian==15
  tipomediana5=tipomediana(1,3);
+     end
 end
 end
 end
@@ -3133,7 +2960,7 @@ end
 end
 end
 end
-end
+
 %Calidad del cruce peatonal
 disp('1 = Deficiente')
 disp('2 = Adecuado')
@@ -3179,6 +3006,7 @@ else if tipointe==14
     tipointer7=tipointer(1,3);
 else if tipointe==15
     tipointer7=tipointer(1,3);
+    end
 end
 end
 end
@@ -3319,6 +3147,7 @@ end
 end
 end
 end
+    end
     end
     end
 end
@@ -3517,18 +3346,18 @@ else if zonaescolar==4
     end
 end
 %Supervisor en el cruce de zona escolar
-supescolar=x(48)
-if supescolar==1
-    supescola=0.781810929397687;
-else if supescolar==2
-        supescola=1;
-else if supescolar==3
-        supescola=1;        
-    end
-    end
-end
+%supescolar=x(48)
+%if supescolar==1
+%    supescola=0.781810929397687;
+%else if supescolar==2
+%        supescola=1;
+%else if supescolar==3
+%        supescola=1;        
+%    end
+%    end
+%end
 %Total de estrellas en peatones
-EstPeato=Z*limitevelp*zonaescola*supescola;
+EstPeato=Z*limitevelp*zonaescola
 if EstPeato>=90
     EstPeaton=1;
 else if EstPeato>=40&EstPeato<90
@@ -3548,3 +3377,4 @@ else if EstPeato>0&EstPeato<5
     end
 end
 end
+
