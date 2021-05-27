@@ -9,14 +9,14 @@ if tipoare==1 && anchocarri==1 %Ancho (≥ 3,25 m)
    anchocarril=1;
 elseif tipoare==1 && anchocarri==2 %Medio (≥ 2,75 m a < 3,25 m)
    anchocarril=1.2;
-else tipoare==1 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
+elseif tipoare==1 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
    anchocarril=1.5;
 end
 if tipoare==2 && anchocarri==1 %Ancho (≥ 3,25 m)
    anchocarril=1;
 elseif tipoare==2 && anchocarri==2 %Medio (≥ 2,75 m a < 3,25 m)
    anchocarril=1.05;
-else tipoare==2 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
+elseif tipoare==2 && anchocarri==3 %Estrecho (≥ 0 m a < 2,75 m)
    anchocarril=1.1;
 end
 %Curvatura
@@ -111,12 +111,12 @@ end
 %Pendiente
 %T7=[1 1 1 1;1.2 1.2 1.2 1.2;1.7 1.7 1.7 1.7];
 pendient=x(16);
-if pendient==3 %≥ 10 
-   pendiente=1.7;
+if pendient==1 %0 % a < 7,5  
+   pendiente=1;
 elseif pendient==2 %7,5  a 10 
         pendiente=1.2
-else pendient==1 %0 % a < 7,5 %
-        pendiente=1
+else pendient==3 %≥ 10
+        pendiente=1.7
 end
 %Resistencia al deslizamiento
 T8=[1 1 1 1;1.4 1.6 1.4 1.6;2 2.5 2 2.5;3 4 3 4;5.5 7.5 5.5 7.5];
@@ -493,7 +493,7 @@ end
 if objcopilot==2
     for i=1:3
  objcopiloto(1,i)=T10(2,i);
-    end;
+    end
 end
 if objcopilot==3
     for i=1:3
@@ -1293,120 +1293,120 @@ elseif limitevelo==145
     limitevelb=6.90531314;
     limitevelp=4.24132429;
 elseif limitevelo==140
-         limitevel=13.2553095;
-         limitevelm=13.1560769;
+    limitevel=13.2553095;
+    limitevelm=13.1560769;
     limitevelb=6.66251113;
     limitevelp=4.09220848;
 elseif limitevelo==135
-         limitevel=11.8856755;
-         limitevelm=11.7966764;
-    limitevelb=6.42683288;
-    limitevelp=3.94741390;
+     limitevel=11.8856755;
+     limitevelm=11.7966764;
+     limitevelb=6.42683288;
+     limitevelp=3.94741390;
 elseif limitevelo==130
-         limitevel=10.6140985;
-         limitevelm=10.5343760;
-    limitevelb=6.19115464;
-    limitevelp=3.80268581;
+     limitevel=10.6140985;
+     limitevelm=10.5343760;
+     limitevelb=6.19115464;
+     limitevelp=3.80268581;
 elseif limitevelo==125
-         limitevel=9.44012652;
-         limitevelm=9.36950146;
-    limitevelb=5.948501103;
-    limitevelp=3.653570;
+     limitevel=9.44012652;
+     limitevelm=9.36950146;
+     limitevelb=5.948501103;
+     limitevelp=3.653570;
 elseif limitevelo==120
-        limitevel=8.34794396;
-        limitevelm=8.28673835;
-    limitevelb=5.71282279;
-    limitevelp=3.50884190;
+     limitevel=8.34794396;
+     limitevelm=8.28673835;
+     limitevelb=5.71282279;
+     limitevelp=3.50884190;
 elseif limitevelo==115
-         limitevel=7.35336647;
-         limitevelm=7.2981427;
-    limitevelb=5.47002077;
-    limitevelp=3.3597261;
+     limitevel=7.35336647;
+     limitevelm=7.2981427;
+     limitevelb=5.47002077;
+     limitevelp=3.3597261;
 elseif limitevelo==110
-         limitevel=6.4238590;
-         limitevelm=6.3756924;
-    limitevelb=5.23434253;
-    limitevelp=3.2149980;
+     limitevel=6.4238590;
+     limitevelm=6.3756924;
+     limitevelb=5.23434253;
+     limitevelp=3.2149980;
 elseif limitevelo==105
-         limitevel=5.59240849;
-         limitevelm=5.55034213;
-    limitevelb=4.99866429;
-    limitevelp=3.07020343;
+     limitevel=5.59240849;
+     limitevelm=5.55034213;
+     limitevelb=4.99866429;
+     limitevelp=3.07020343;
 elseif limitevelo==100
-         limitevel=4.82602801;
-         limitevelm=4.78983382;
-    limitevelb=4.75601068;
-    limitevelp=2.92108762;
+     limitevel=4.82602801;
+     limitevelm=4.78983382;
+     limitevelb=4.75601068;
+     limitevelp=2.92108762;
 elseif limitevelo==95
-         limitevel=4.14143696; 
-         limitevelm=4.11013359;
-    limitevelb=4.520332444;
-    limitevelp=2.77635952;
+     limitevel=4.14143696; 
+     limitevelm=4.11013359;
+     limitevelb=4.520332444;
+     limitevelp=2.77635952;
 elseif limitevelo==90
-         limitevel=3.52191595;
-         limitevelm=3.49527533;
-    limitevelb=3.80617393;
-    limitevelp=2.63163143;
+     limitevel=3.52191595;
+     limitevelm=3.49527533;
+     limitevelb=3.80617393;
+     limitevelp=2.63163143;
 elseif limitevelo==85
-         limitevel=2.96746498;
-         limitevelm=2.94525904;
-    limitevelb=3.17067379;
-    limitevelp=2.48251562;
+     limitevel=2.96746498;
+     limitevelm=2.94525904;
+     limitevelb=3.17067379;
+     limitevelp=2.48251562;
 elseif limitevelo==80
-         limitevel=2.46678716;
-         limitevelm=2.44998370;
-    limitevelb=2.60655981;
-    limitevelp=2.33778752;
+     limitevel=2.46678716;
+     limitevelm=2.44998370;
+     limitevelb=2.60655981;
+     limitevelp=2.33778752;
 elseif limitevelo==75
-         limitevel=2.014460;
-         limitevelm=2.00358422;
-    limitevelb=2.11383199;
-    limitevelp=2.10969286;
+     limitevel=2.014460;
+     limitevelm=2.00358422;
+     limitevelb=2.11383199;
+     limitevelp=2.10969286;
 elseif limitevelo==70
-         limitevel=1.63126977;
-         limitevelm=1.62430789;
-    limitevelb=1.68506975;
-    limitevelp=1.68421752;
+     limitevel=1.63126977;
+     limitevelm=1.62430789;
+     limitevelb=1.68506975;
+     limitevelp=1.68421752;
 elseif limitevelo==65
-         limitevel=1.28242205;
-         limitevelm=1.27924405;
-    limitevelb=1.31418818;
-    limitevelp=1.31146124;
+     limitevel=1.28242205;
+     limitevelm=1.27924405;
+     limitevelb=1.31418818;
+     limitevelp=1.31146124;
 elseif limitevelo==60
-         limitevel=1;
-         limitevelm=1;
-    limitevelb=1;
-    limitevelp=1;
+     limitevel=1;
+     limitevelm=1;
+     limitevelb=1;
+     limitevelp=1;
 elseif limitevelo==55
-         limitevel=0.75237234;
-         limitevelm=0.75431736;
-    limitevelb=0.73567824;
-    limitevelp=0.73687009;
+     limitevel=0.75237234;
+     limitevelm=0.75431736;
+     limitevelb=0.73567824;
+     limitevelp=0.73687009;
 elseif limitevelo==50
-         limitevel=0.55490284;
-         limitevelm=0.55881394;
-    limitevelb=0.52151973;
-    limitevelp=0.52193857;
+     limitevel=0.55490284;
+     limitevelm=0.55881394;
+     limitevelb=0.52151973;
+     limitevelp=0.52193857;
 elseif limitevelo==45
-         limitevel=0.55490284;
-         limitevelm=0.55881394;
-    limitevelb=0.52151973;
-    limitevelp=0.52193857;
+     limitevel=0.55490284;
+     limitevelm=0.55881394;
+     limitevelb=0.52151973;
+     limitevelp=0.52193857;
 elseif limitevelo==40
-         limitevel=0.55490284;
-         limitevelm=0.55881394;
-    limitevelb=0.52151973;
-    limitevelp=0.52193857;
+     limitevel=0.55490284;
+     limitevelm=0.55881394;
+     limitevelb=0.52151973;
+     limitevelp=0.52193857;
 elseif limitevelo==35
-         limitevel=0.55490284;
-         limitevelm=0.55881394;
-    limitevelb=0.52151973;
-    limitevelp=0.52193857;
+     limitevel=0.55490284;
+     limitevelm=0.55881394;
+     limitevelb=0.52151973;
+     limitevelp=0.52193857;
 else limitevelo==30
-         limitevel=0.55490284;
-         limitevelm=0.55881394;
-    limitevelb=0.52151973;
-    limitevelp=0.52193857;
+     limitevel=0.55490284;
+     limitevelm=0.55881394;
+     limitevelb=0.52151973;
+     limitevelp=0.52193857;
 end
 %Tipo de carretera
 tipocarretera=x(8)
@@ -1878,7 +1878,7 @@ else infbic==7
         infbici2=infbici(1,3);
 end
 %Velocidad de operacion (+10 km/h)
-veloperacio=x(52);
+%veloperacio=x(52);
  if veloperacio==150
         veloperacionbi=1;
  elseif veloperacio==145
@@ -2601,81 +2601,81 @@ else tipomedian==15
  tipomediana6=tipomediana(1,3);
 end
 %Infraestructura para cruce peatonal - via lateral
-infcrucepe=x(39)
-if infcrucepe==1 && supescolar==3
-    infcrucep1=0.4;
-elseif infcrucepe==2 && supescolar==3
-    infcrucep1=1;
-elseif infcrucepe==3 && supescolar==3
-    infcrucep1=1.25;
-elseif infcrucepe==4 && supescolar==3
-    infcrucep1=3.8;
-elseif infcrucepe==5 && supescolar==3
-    infcrucep1=4.8;
-elseif infcrucepe==6 && supescolar==3
-    infcrucep1=5.1;
-elseif infcrucepe==7 && supescolar==3
-    infcrucep1=6.7;        
-elseif infcrucepe==8 && supescolar==3
-    infcrucep1=2.5;    
-elseif infcrucepe==9 && supescolar==3
-    infcrucep1=3.2;   
-elseif infcrucepe==10 && supescolar==3
-    infcrucep1=3.4;    
-elseif infcrucepe==11 && supescolar==3
-    infcrucep1=4.5;    
-end
-if infcrucepe==1 && supescolar==1
-    infcrucep1=0.3;
-elseif infcrucepe==2 && supescolar==1
-    infcrucep1=0.95;
-elseif infcrucepe==3 && supescolar==1
-    infcrucep1=1.2;
-elseif infcrucepe==4 && supescolar==1
-    infcrucep1=1;
-elseif infcrucepe==5 && supescolar==1
-    infcrucep1=1.25;
-elseif infcrucepe==6 && supescolar==1
-    infcrucep1=3.8;
-elseif infcrucepe==7 && supescolar==1
-    infcrucep1=4.8;        
-elseif infcrucepe==9 && supescolar==1
-    infcrucep1=1;    
-elseif infcrucepe==10 && supescolar==1
-    infcrucep1=1;   
-elseif infcrucepe==11 && supescolar==1
-    infcrucep1=2.5;    
-elseif infcrucepe==12 && supescolar==1
-    infcrucep1=3.2;    
-end
-if infcrucepe==1 && supescolar==2
-    infcrucep1=0.4;
-elseif infcrucepe==2 && supescolar==2
-    infcrucep1=1;
-elseif infcrucepe==3 && supescolar==2
-    infcrucep1=1.25;
-elseif infcrucepe==4 && supescolar==2
-    infcrucep1=3.8;
-elseif infcrucepe==5 && supescolar==2
-    infcrucep1=4.8;
-elseif infcrucepe==6 && supescolar==2
-    infcrucep1=5.1;
-elseif infcrucepe==7 && supescolar==2
-    infcrucep1=6.7;        
-elseif infcrucepe==9 && supescolar==2
-    infcrucep1=2.5;    
-elseif infcrucepe==10 && supescolar==2
-    infcrucep1=3.2;   
-elseif infcrucepe==11 && supescolar==2
-    infcrucep1=3.4;    
-elseif infcrucepe==12 && supescolar==2
-    infcrucep1=4.5;    
-end
-%%Interseccion
+%infcrucepe=x(39)
+%if infcrucepe==1 && supescolar==3
+%    infcrucep1=0.4;
+%elseif infcrucepe==2 && supescolar==3
+%    infcrucep1=1;
+%elseif infcrucepe==3 && supescolar==3
+%    infcrucep1=1.25;
+%elseif infcrucepe==4 && supescolar==3
+%    infcrucep1=3.8;
+%elseif infcrucepe==5 && supescolar==3
+%    infcrucep1=4.8;
+%elseif infcrucepe==6 && supescolar==3
+%    infcrucep1=5.1;
+%elseif infcrucepe==7 && supescolar==3
+%    infcrucep1=6.7;        
+%elseif infcrucepe==8 && supescolar==3
+%    infcrucep1=2.5;    
+%elseif infcrucepe==9 && supescolar==3
+%    infcrucep1=3.2;   
+%elseif infcrucepe==10 && supescolar==3
+%    infcrucep1=3.4;    
+%elseif infcrucepe==11 && supescolar==3
+%    infcrucep1=4.5;    
+%end
+%if infcrucepe==1 && supescolar==1
+%    infcrucep1=0.3;
+%elseif infcrucepe==2 && supescolar==1
+%    infcrucep1=0.95;
+%elseif infcrucepe==3 && supescolar==1
+%    infcrucep1=1.2;
+%elseif infcrucepe==4 && supescolar==1
+%    infcrucep1=1;
+%elseif infcrucepe==5 && supescolar==1
+%    infcrucep1=1.25;
+%elseif infcrucepe==6 && supescolar==1
+%    infcrucep1=3.8;
+%elseif infcrucepe==7 && supescolar==1
+%    infcrucep1=4.8;        
+%elseif infcrucepe==9 && supescolar==1
+%    infcrucep1=1;    
+%elseif infcrucepe==10 && supescolar==1
+%    infcrucep1=1;   
+%elseif infcrucepe==11 && supescolar==1
+%    infcrucep1=2.5;    
+%elseif infcrucepe==12 && supescolar==1
+%    infcrucep1=3.2;    
+%end
+%if infcrucepe==1 && supescolar==2
+%    infcrucep1=0.4;
+%elseif infcrucepe==2 && supescolar==2
+%    infcrucep1=1;
+%elseif infcrucepe==3 && supescolar==2
+%    infcrucep1=1.25;
+%elseif infcrucepe==4 && supescolar==2
+%    infcrucep1=3.8;
+%elseif infcrucepe==5 && supescolar==2
+%    infcrucep1=4.8;
+%elseif infcrucepe==6 && supescolar==2
+%    infcrucep1=5.1;
+%elseif infcrucepe==7 && supescolar==2
+%    infcrucep1=6.7;        
+%elseif infcrucepe==9 && supescolar==2
+%    infcrucep1=2.5;    
+%elseif infcrucepe==10 && supescolar==2
+%    infcrucep1=3.2;   
+%elseif infcrucepe==11 && supescolar==2
+%    infcrucep1=3.4;    
+%elseif infcrucepe==12 && supescolar==2
+%    infcrucep1=4.5;    
+%end
+%Interseccion
 %Atributo vial severidad
 infcruceinsp1at=0.02;
 %Infraestructura para cruce peatonal 
-V=ncarriles3*tipomediana6*infcrucep1*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo*infcruceinsp1*infcruceinsp1at*veloperacionpe;
+V=ncarriles3*tipomediana6*infcrucep*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo*infcruceinsp1*infcruceinsp1at*veloperacionpe;
 %Flujo peatonal en hora pico a lo largo de la carretera (lado del conductor)
 %Flujo peatonal en hora pico a lo largo de la carretera (lado del conductor)
 porpeatoncon=x(33);
