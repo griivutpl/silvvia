@@ -1,6 +1,7 @@
-function [EstVehiculo,EstMotocicleta,EstCiclista,EstPeaton,EstVehicul,EstMoto,EstCicl,EstPeato]=Calculo_estrellas_VehIntentoFinal(x)
-%0.Clasificacion por estrellas para ocupante de vehiculo
-%%Salida del camino (lado del conductor)
+function [cosalidaconductorveh,cosalidacopilotoveh,coperdidacontrolveh,coadelantamientoveh,cointerseccionveh,coaccesopropiedadesveh,cosalidaconductormot,cosalidacopilotomot,coperdidacontrolmot,coadelantamientomot,cointerseccionmot,coaccesopropiedadesmot,colargomot,colargoci,cosalidaci,cointerseccionci,colargoconpe,colargocoppe,coinsppe,colatpe,EstVehiculo,EstMotocicleta,EstCiclista,EstPeaton,EstVehicul,EstMoto,EstCicl,EstPeato]=Calculo_estrellas_VehIntentoFinal(x)
+%coeficientes:Se crea funcion para sacar coeficientes
+%%0.CLASIFICACION POR ESTRELLAS PARA OCUPANTE DEL VEHICULO
+%Salida del camino (lado del conductor)
 %Ancho carril
 %Tipo de area 1=Rural; 2=Urbano
 tipoare=x(38);
@@ -371,7 +372,6 @@ elseif veloperacio==35
 else veloperacio==30
          veloperacion=0;
 end
- %%1.Clasificación por Estrellas para la salida del camino (lado del conductor)
 if curvatur==1
      curvatura2=curvatura(1,1);
 elseif curvatur==2
@@ -412,7 +412,7 @@ elseif distconducto==2
   distconductor2=distconductor(1,1);
 elseif distconducto==3
   distconductor2=distconductor(1,1);
-else distconducto==4
+elseif distconducto==4
   distconductor2=distconductor(1,1);
 end
 if objconducto==1
@@ -459,8 +459,13 @@ elseif anchoespaldo==3
 else anchoespaldo==4
   anchoespaldon2=anchoespaldon(1,1);
 end
+%Probabilidad
+x1=anchocarril*curvatura2*calidadcurva2*delineacion*bandasonoraes*estadosuperficie2*pendiente*resdeslizamiento2;
+%Severidad
+x2=distconductor2*objconductor2*anchoespaldon2;
+%Clasificación por Estrellas para la salida del camino (lado del conductor)
 A=anchocarril*curvatura2*calidadcurva2*delineacion*bandasonoraes*estadosuperficie2*pendiente*resdeslizamiento2*distconductor2*objconductor2*anchoespaldon2*flujoext*veloperacion*transitabilida;
-%%Salida del camino (lado del copiloto)
+%%Salida del camino (lado del copiloto)%
 %Severidad en la carretera: distancia del lado del copiloto
 distcopilot=x(3);
 if distcopilot==1
@@ -645,8 +650,12 @@ elseif anchoespaldonco==3
 else anchoespaldonco==4
   anchoespaldoncop2=anchoespaldoncop(1,1);
 end
+%Probabilidad igual a Probabibilidad del lado del conductor
+%Severidad
+x3=distcopiloto2*objcopiloto2*anchoespaldoncop2;
+%Clasificacion por estrellas para salida del camino (lado copiloto)
 B=anchocarril*curvatura2*calidadcurva2*delineacion*bandasonoraes*estadosuperficie2*pendiente*resdeslizamiento2*distcopiloto2*objcopiloto2*anchoespaldoncop2*flujoext*veloperacion;
-%%Choque frontal (pérdida de control)
+%%Choque frontal (pérdida de control)%
 %Bandas sonoras centrales
 disp('1= Ausente')
 disp('2 = Presente')
@@ -850,8 +859,12 @@ elseif tipomedian==14
 else tipomedian==15
  tipomediana2=tipomediana(1,1);
 end 
+%Probabilidad
+x4=anchocarril*curvatura2*calidadcurva2*delineacion*bandassonoras*estadosuperficie2*pendiente*resdeslizamiento2;
+%Severidad igual a tipomediana2
+%Clasificacion por estrellas para accidente frontal (perdida del control)
 C=anchocarril*curvatura2*calidadcurva2*delineacion*bandassonoras*estadosuperficie2*pendiente*resdeslizamiento2*tipomediana2*flujoext1*veloperacion1*transitabilida;
-%%Clasificación por Estrellas Choque frontal (adelantamiento) 
+%%Clasificación por Estrellas Choque frontal (adelantamiento) %
 %Velocidades diferenciales
 disp('1 = Ausente');
 disp('2 = Presente');
@@ -944,7 +957,12 @@ elseif tipomedian==14
 else tipomedian==15
  tipomediana3=tipomediana(1,2);
 end
-D=pendiente*resdeslizamiento2*velodiferencial*ncarriles2*tipomediana3*0*veloperacion1
+cero=0;
+%Probabilidad
+x5=pendiente*resdeslizamiento2*velodiferencial*ncarriles2;
+%Severidad igual a tipomediana3
+%Clasificacion por estrellas frontal (adelantamiento)
+D=pendiente*resdeslizamiento2*velodiferencial*ncarriles2*tipomediana3*cero*veloperacion1;
 %%Interseccion 
 %Tipo de interseccion
 T15=[6 15 1.05 40 6 20;15 15 1.5 150 30 30;13 45 1.1 45 17 45;16 45 1.1 55 20 45;9 45 1.1 30 9 45;12 45 1.1 40 14 45;16 50 1.2 55 16 50;23 50 1.2 80 26 50;10 50 1.2 35 10 50;15 50 1.2 50 16 50;0 0 1 0 0 0;1 150 1 3 1 150;0.5 150 1 1 0.5 150;0.5 45 1.1 2 0.5 45;0.3 45 1.1 1 0.3 45;16 35 1.3 55 16 35];
@@ -1190,6 +1208,10 @@ elseif volinte==6 %1 a 100 veh
 else volinte==7 %Ninguno
         volinter=0
 end
+%Probabilidad
+x6=tipointer2*calinter*pendiente*alumbrado1*resdeslizamiento2*distvisual*caninter*gestvelo;
+%Severidad igual a tipointer3
+%Clasificacion por estrellas para la interseccion
 E=tipointer2*calinter*pendiente*alumbrado1*resdeslizamiento2*distvisual*caninter*gestvelo*tipointer3*volinter*veloperacion;
 %%Acceso a propiedades
 if tipomedian==1
@@ -1279,6 +1301,10 @@ else puntacces==4
 end
 %Influencia del flujo externo - Flujo predeterminado
 flujopre=0.01;
+%Probabilidad
+x7=tipomediana4*vacceso*puntacceso1;
+%Severidad igual a puntacceso2
+%Clasificacion por estrellas para acceso a propiedades
 F=tipomediana4*vacceso*puntacceso1*puntacceso2*flujopre*veloperacion;
 %Limite de velocidad
 limitevelo=x(49);
@@ -1440,7 +1466,9 @@ elseif EstVehicul>=0&EstVehicul<2.5
 else EstVehicul==0
     EstVehiculo=0;
 end
-%Clasificacion para motociclistas
+%Puntuacion Total/Vehiculo
+x8=EstVehicul;
+%CLASIFICACION PARA MOTOCICLISTAS
 %Salida del camino (lado del conducto)
 if curvatur==1
     curvatura3=curvatura(1,2);
@@ -1531,6 +1559,11 @@ elseif anchoespaldo==3
 else anchoespaldo==4
   anchoespaldon3=anchoespaldon(1,1);
 end
+%Probabilidad
+x9=anchocarril*curvatura3*calidadcurva3*delineacion*bandasonoraes*estadosuperficie3*pendiente*resdeslizamiento3;
+%Severidad
+x10=distconductor3*objconductor3*anchoespaldon2;
+%Clasificacion por estrellas pra la salida del camino (lado del conductor)
 G=anchocarril*curvatura3*calidadcurva3*delineacion*bandasonoraes*estadosuperficie3*pendiente*resdeslizamiento3*distconductor3*objconductor3*anchoespaldon2*flujoext*veloperacion*transitabilida;
 %%Salida del camino (lado del copiloto)
 if distcopilot==1
@@ -1586,10 +1619,22 @@ elseif anchoespaldonco==3
 else anchoespaldonco==4
   anchoespaldoncop3=anchoespaldoncop(1,1);
 end
+%Probabilidad igual a conductor Modo x9
+%Severidad
+x11=distcopiloto3*objcopiloto3*anchoespaldoncop3;
+%Clasificacion por estrellas para la salida de la via (lado copiloto)
 H=anchocarril*curvatura3*calidadcurva3*delineacion*bandasonoraes*estadosuperficie3*pendiente*resdeslizamiento3*distcopiloto3*objcopiloto3*anchoespaldoncop3*flujoext*veloperacion;
-%Frontal (pérdida del control) 
+%Frontal (pérdida del control)
+%Probabilidad
+x12=anchocarril*curvatura3*calidadcurva3*delineacion*bandassonoras*estadosuperficie3*pendiente*resdeslizamiento3;
+%Severidad es tipomediana2
+%Clasificacion por estrellas frontal (perdida de control)
 I=anchocarril*curvatura3*calidadcurva3*delineacion*bandassonoras*estadosuperficie3*pendiente*resdeslizamiento3*tipomediana2*flujoext1*veloperacion1*transitabilida;
 %%Frontal (Adelantamiento)
+%Probabilidad
+x13=pendiente*resdeslizamiento3*velodiferencial*ncarriles2;
+%Severidad es tipomediana3
+%Clasificacion por estrellas frontal (adeantamiento)
 J=pendiente*resdeslizamiento3*velodiferencial*ncarriles2*tipomediana3*0*veloperacion;
 %%Interseccion
 if tipointe==1
@@ -1674,11 +1719,18 @@ elseif volinte==6
 else volinte==7
         volinter2=0
 end
+%Probabilidad
+x14=tipointer4*calinter*pendiente*alumbrado1*resdeslizamiento3*distvisual*caninter*gestvelo;
+%Severidad igual a tipointer5
+%Clasificacion por estrellas para la interseccion
 K=tipointer4*calinter*pendiente*alumbrado1*resdeslizamiento3*distvisual*caninter*gestvelo*tipointer5*volinter2*veloperacion;
 %%Acceso a propiedades
 %Via de servicio
 %Puntos de acceso
 %Influencia del flujo externo - Flujo predeterminado
+%Probabilidad
+x15=vacceso*puntacceso1;
+%Severidad es igual a puntacceso2
 ZX=vacceso*puntacceso1*puntacceso2*flujopre*veloperacion;
 %%A lo largo
 %Infraestructura para motocicletas
@@ -1784,6 +1836,8 @@ elseif EstMoto>0&EstMoto<2.5
 else EstMoto==0
     EstMotocicleta=0;
 end
+%Puntuacion total
+x16=EstMoto;
 %%%Clasificación por Estrellas para ciclistas
 %Infraestructura para bicicletas 
 T21=[0 1 0;0.1 1 90;12 1 90;20 1.2 90;17 1.2 90;19 1 90;1 1 90];
@@ -1944,6 +1998,10 @@ elseif flujoex>=32001&flujoex<40001
 else flujoex>=40001
         flujoext5=0.0641333974;      
 end
+%Probabilidad
+x17=infbici1*curvatura2*calidadcurva3*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*bandasonoraes*estveh*resdeslizamiento3*alumbrado2;
+%Severidad es infbici2
+%Clasificacion por estrellas a lo largo
 M=infbici1*curvatura2*calidadcurva3*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*bandasonoraes*estveh*resdeslizamiento3*alumbrado2*infbici2*veloperacionbi*flujoext5;
 %%Salida de via
 if estadosuperfici==1
@@ -2041,7 +2099,11 @@ elseif objcopilot==16
 else objcopilot==17
  objcopiloto4=objcopiloto(1,3);
 end
+%Probabilidad
+x20=anchocarril*curvatura2*calidadcurva3*delineacion*alumbrado2*estadosuperficie5*pendiente*resdeslizamiento3;
+%Severidad
 W=((distconductor4*objconductor4)+(distcopiloto4*objcopiloto4))/2
+%Clasificacion por estrellas salida de la via
 N=anchocarril*curvatura2*calidadcurva3*delineacion*alumbrado2*estadosuperficie5*pendiente*resdeslizamiento3*W*veloperacionbi*flujoext5;
 %%Interseccion
 if tipointe==1
@@ -2124,6 +2186,7 @@ disp('9 = Cruce demarcado elevado. sin semáforo. sin refugio')
 disp('10 = Cruce no demarcado elevado. con refugio')
 disp('11 = Cruce no demarcado elevado. sin refugio')
 T40=[0.4 0.3 0.4;1 0.95 1;1.25 1.2 1.25;3.8 1 3.8;4.8 1.25 4.8;5.1 3.8 5.1;6.7 4.8 5.1;2.5 1 2.5;3.2 1 3.2;3.4 2.5 3.4;4.5 3.2 4.5];
+%Via Inspeccionada
 infcrucepe=x(39)
 if infcrucepe==1 && supescolar==3
     infcrucep=0.4;
@@ -2162,13 +2225,13 @@ elseif infcrucepe==6 && supescolar==1
     infcrucep=3.8;
 elseif infcrucepe==7 && supescolar==1
     infcrucep=4.8;        
-elseif infcrucepe==9 && supescolar==1
+elseif infcrucepe==8 && supescolar==1
     infcrucep=1;    
-elseif infcrucepe==10 && supescolar==1
+elseif infcrucepe==9 && supescolar==1
     infcrucep=1;   
-elseif infcrucepe==11 && supescolar==1
+elseif infcrucepe==10 && supescolar==1
     infcrucep=2.5;    
-elseif infcrucepe==12 && supescolar==1
+elseif infcrucepe==11 && supescolar==1
     infcrucep=3.2;    
 end
 if infcrucepe==1 && supescolar==2
@@ -2185,15 +2248,19 @@ elseif infcrucepe==6 && supescolar==2
     infcrucep=5.1;
 elseif infcrucepe==7 && supescolar==2
     infcrucep=6.7;        
-elseif infcrucepe==9 && supescolar==2
+elseif infcrucepe==8 && supescolar==2
     infcrucep=2.5;    
-elseif infcrucepe==10 && supescolar==2
+elseif infcrucepe==9 && supescolar==2
     infcrucep=3.2;   
-elseif infcrucepe==11 && supescolar==2
+elseif infcrucepe==10 && supescolar==2
     infcrucep=3.4;    
-elseif infcrucepe==12 && supescolar==2
+elseif infcrucepe==11 && supescolar==2
     infcrucep=4.5;    
 end
+%Probabilidad
+x18=tipointer6*calinter*pendiente*resdeslizamiento3*infbici3*alumbrado2*distvisual*caninter*gestvelo*infcrucep;
+%Severidad igual a tipointer5
+%Clasificacion por estrellas para la interseccion
 O=tipointer6*calinter*pendiente*resdeslizamiento3*infbici3*alumbrado2*distvisual*caninter*gestvelo*infcrucep*tipointer5*veloperacionbi*volinter3;
 porcicli=x(35);
 if porcicli==1
@@ -2232,7 +2299,9 @@ elseif EstCicl>0&EstCicl<5
 else EstCicl==0
     EstCiclista=0;
 end
-%%Calificación de estrellas para peatones
+%Puntaje total
+x19=EstCicl;
+%%CALIFICACION DE ESTRELLAS PARA PEATONES
 %A lo largo (lado del conductor) 
 %Atributo vial (probabilidad)
 %Acera-lado de conductor
@@ -2295,7 +2364,8 @@ elseif aceconducto==6
 else aceconducto==7
         aceconductor1=aceconductor(1,1);
 end
-P=aceconductor1*curvatura2*calidadcurva2*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*estveh*bandasonoraes*resdeslizamiento2*alumbrado2;
+%Probabilidad
+P=aceconductor1*curvatura3*calidadcurva2*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*estveh*bandasonoraes*resdeslizamiento2*alumbrado2;
 if aceconducto==1
     aceconductor2=aceconductor(1,2);
 elseif aceconducto==2
@@ -2438,7 +2508,8 @@ elseif acecopilot==6
 else acecopilot==7
         acecopiloto1=acecopiloto(1,1);
 end
-R=acecopiloto1*curvatura2*calidadcurva2*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*estveh*bandasonoraes*resdeslizamiento2*alumbrado2;
+%Probabilidad
+R=acecopiloto1*curvatura3*calidadcurva2*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*estveh*bandasonoraes*resdeslizamiento2*alumbrado2;
 if aceconducto==1
      acecopiloto2=acecopiloto(1,2);
 elseif aceconducto==2
@@ -2562,11 +2633,85 @@ else alumbrad==2
    alumbrado3=alumbrado(1,2);
 end
 %Numero de carriles
-%Atributo vial severidad
+%Probabilidad
+x21=ncarriles3*tipomediana5*infcrucep*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo;
+%Severidad
 infcruceinsp1=90;
 flujoext9=0.03;
+%ClasifiCacion por estrellas del cruce peatonal (via inspeccionada)
 U=ncarriles3*tipomediana5*infcrucep*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo*flujoext9*veloperacionpe*infcruceinsp1;
 %Cruce peatonal (vía lateral)
+%Via Inspeccionada
+infcrucepelat=x(41)
+if infcrucepelat==1 && supescolar==3
+    infcrucepela=0.4;
+elseif infcrucepelat==2 && supescolar==3
+    infcrucepela=1;
+elseif infcrucepelat==3 && supescolar==3
+    infcrucepela=1.25;
+elseif infcrucepelat==4 && supescolar==3
+    infcrucepela=3.8;
+elseif infcrucepelat==5 && supescolar==3
+    infcrucepela=4.8;
+elseif infcrucepelat==6 && supescolar==3
+    infcrucepela=5.1;
+elseif infcrucepelat==7 && supescolar==3
+    infcrucepela=6.7;        
+elseif infcrucepelat==8 && supescolar==3
+    infcrucepela=2.5;    
+elseif infcrucepelat==9 && supescolar==3
+    infcrucepela=3.2;   
+elseif infcrucepelat==10 && supescolar==3
+    infcrucepela=3.4;    
+elseif infcrucepelat==11 && supescolar==3
+    infcrucepela=4.5;    
+end
+if infcrucepelat==1 && supescolar==1
+    infcrucepela=0.3;
+elseif infcrucepelat==2 && supescolar==1
+    infcrucepela=0.95;
+elseif infcrucepelat==3 && supescolar==1
+    infcrucepela=1.2;
+elseif infcrucepelat==4 && supescolar==1
+    infcrucepela=1;
+elseif infcrucepelat==5 && supescolar==1
+    infcrucepela=1.25;
+elseif infcrucepelat==6 && supescolar==1
+    infcrucepela=3.8;
+elseif infcrucepelat==7 && supescolar==1
+    infcrucepela=4.8;        
+elseif infcrucepelat==8 && supescolar==1
+    infcrucepela=1;    
+elseif infcrucepelat==9 && supescolar==1
+    infcrucepela=1;   
+elseif infcrucepelat==10 && supescolar==1
+    infcrucepela=2.5;    
+elseif infcrucepelat==11 && supescolar==1
+    infcrucepela=3.2;    
+end
+if infcrucepelat==1 && supescolar==2
+    infcrucepela=0.4;
+elseif infcrucepelat==2 && supescolar==2
+    infcrucepela=1;
+elseif infcrucepelat==3 && supescolar==2
+    infcrucepela=1.25;
+elseif infcrucepelat==4 && supescolar==2
+    infcrucepela=3.8;
+elseif infcrucepelat==5 && supescolar==2
+    infcrucepela=4.8;
+elseif infcrucepelat==6 && supescolar==2
+    infcrucepela=5.1;
+elseif infcrucepelat==7 && supescolar==2
+    infcrucepela=6.7;        
+elseif infcrucepelat==8 && supescolar==2
+    infcrucepela=2.5;    
+elseif infcrucepelat==9 && supescolar==2
+    infcrucepela=3.2;   
+elseif infcrucepelat==10 && supescolar==2
+    infcrucepela=3.4;    
+elseif infcrucepelat==11 && supescolar==2
+    infcrucepela=4.5;    
+end
 %Atributo vial (probabilidad)
 %Numero de carriles
 if tipomedian==1
@@ -2672,12 +2817,16 @@ end
 %    infcrucep1=4.5;    
 %end
 %Interseccion
-%Atributo vial severidad
+%Probabilidad
+x22=ncarriles3*tipomediana6*infcrucepela*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo;
+%Severidad
 infcruceinsp1at=0.02;
 %Infraestructura para cruce peatonal 
-V=ncarriles3*tipomediana6*infcrucep*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo*infcruceinsp1*infcruceinsp1at*veloperacionpe;
+%Clasificacion por estrellas del cruce peatonal (via lateral)
+V=ncarriles3*tipomediana6*infcrucepela*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo*infcruceinsp1*infcruceinsp1at*veloperacionpe;
 %Flujo peatonal en hora pico a lo largo de la carretera (lado del conductor)
 %Flujo peatonal en hora pico a lo largo de la carretera (lado del conductor)
+%Y es Clasificacion por estrellas a lo largo (lado del conductor)
 porpeatoncon=x(33);
 if porpeatoncon==1
         Y=0;
@@ -2703,6 +2852,7 @@ else porpeatoncon==11
          Y=veloperacionpe*flujoext8*aceconductor2*P;
 end
 %Flujo peaton copiloto
+%S es Clasificacion por estrellas a lo largo (lado del copiloto)
 porpeatoncopi=x(34);
 if porpeatoncopi==1
         S=0;
@@ -2727,7 +2877,7 @@ elseif porpeatoncopi==10
 else porpeatoncopi==11
         S=veloperacionpe*flujoext8*acecopiloto2*R;
 end
-%Promedio
+%T es el Promedio entre A lo largo (conductor) y A lo largo (copiloto)
 if Y==0
     T=S;
 elseif S==0
@@ -2735,6 +2885,7 @@ elseif S==0
 elseif Y>0 && S>0
     T=(S+Y)/2;                          
 end
+x24=T;
 %Flujo peatonal en hora pico que cruza la carretera
 porpeatoncru=x(32);
 if porpeatoncru==1 
@@ -2791,5 +2942,358 @@ elseif EstPeato>0&EstPeato<5
 else EstPeato==0
     EstPeaton=0;
 end
+%Puntuacion total
+x23=EstPeato;
+%COEFICIENTES PARA VEHICULO
+%Salida del camino (lado del conductor) Coeficientes1
+cosalidaconductorveh=zeros(1,17);
+cosalidaconductorveh(1)=anchocarril;
+cosalidaconductorveh(2)=curvatura2;
+cosalidaconductorveh(3)=calidadcurva2;
+cosalidaconductorveh(4)=delineacion;
+cosalidaconductorveh(5)=bandasonoraes;
+cosalidaconductorveh(6)=estadosuperficie2;
+cosalidaconductorveh(7)=pendiente;
+cosalidaconductorveh(8)=resdeslizamiento2;
+cosalidaconductorveh(9)=distconductor2;
+cosalidaconductorveh(10)=objconductor2;
+cosalidaconductorveh(11)=anchoespaldon2;
+cosalidaconductorveh(12)=flujoext;
+cosalidaconductorveh(13)=transitabilida;
+cosalidaconductorveh(14)=veloperacion;
+cosalidaconductorveh(15)=x1;
+cosalidaconductorveh(16)=x2;
+cosalidaconductorveh(17)=A;
+%cosalidaconductorveh=[anchocarril,curvatura2,calidadcurva2,delineacion,bandasonoraes,estadosuperficie2,pendiente,resdeslizamiento2,distconductor2,objconductor2,anchoespaldon2,flujoext,transitabilida,veloperacion,A];
+%Salida del camino (lado del copiloto) Coeficientes2
+cosalidacopilotoveh=zeros(1,16);
+cosalidacopilotoveh(1)=anchocarril;
+cosalidacopilotoveh(2)=curvatura2;
+cosalidacopilotoveh(3)=calidadcurva2;
+cosalidacopilotoveh(4)=delineacion;
+cosalidacopilotoveh(5)=bandasonoraes;
+cosalidacopilotoveh(6)=estadosuperficie2;
+cosalidacopilotoveh(7)=pendiente;
+cosalidacopilotoveh(8)=resdeslizamiento2;
+cosalidacopilotoveh(9)=distcopiloto2;
+cosalidacopilotoveh(10)=objcopiloto2;
+cosalidacopilotoveh(11)=anchoespaldoncop2;
+cosalidacopilotoveh(12)=flujoext;
+cosalidacopilotoveh(13)=veloperacion;
+cosalidacopilotoveh(14)=x1;
+cosalidacopilotoveh(15)=x3;
+cosalidacopilotoveh(16)=B;
+%cosalidacopilotoveh=[anchocarril,curvatura2,calidadcurva2,delineacion,bandasonoraes,estadosuperficie2,pendiente,resdeslizamiento2,distcopiloto2,objcopiloto2,anchoespaldoncop2,flujoext,veloperacion,B];
+%Choque Frontal (perdida del control) Coeficientes3
+coperdidacontrolveh=zeros(1,14);
+coperdidacontrolveh(1)=anchocarril;
+coperdidacontrolveh(2)=curvatura2;
+coperdidacontrolveh(3)=calidadcurva2;
+coperdidacontrolveh(4)=delineacion;
+coperdidacontrolveh(5)=bandassonoras;
+coperdidacontrolveh(6)=estadosuperficie2;
+coperdidacontrolveh(7)=pendiente;
+coperdidacontrolveh(8)=resdeslizamiento2;
+coperdidacontrolveh(9)=tipomediana2;
+coperdidacontrolveh(10)=flujoext1;
+coperdidacontrolveh(11)=transitabilida;
+coperdidacontrolveh(12)=veloperacion1;
+coperdidacontrolveh(13)=x4;
+coperdidacontrolveh(14)=C;
+%coperdidacontrolveh=[anchocarril,curvatura2,calidadcurva2,delineacion,bandassonoras,estadosuperficie2,pendiente,resdeslizamiento2,tipomediana2,flujoext1,transitabilida,veloperacion1,C];
+%Choque Frontal (adelantamiento) Coeficientes4
+coadelantamientoveh=zeros(1,9);
+coadelantamientoveh(1)=pendiente;
+coadelantamientoveh(2)=resdeslizamiento2;
+coadelantamientoveh(3)=velodiferencial;
+coadelantamientoveh(4)=ncarriles2;
+coadelantamientoveh(5)=tipomediana3;
+coadelantamientoveh(6)=cero;
+coadelantamientoveh(7)=veloperacion1;
+coadelantamientoveh(8)=x5;
+coadelantamientoveh(9)=D;
+%coadelantamientoveh=[pendiente,resdeslizamiento2,velodiferencial,ncarriles2,tipomediana3,cero,veloperacion1,D];
+%Interseccion Coeficientes5
+cointerseccionveh=zeros(1,13);
+cointerseccionveh(1)=tipointer2;
+cointerseccionveh(2)=calinter;
+cointerseccionveh(3)=pendiente;
+cointerseccionveh(4)=alumbrado1;
+cointerseccionveh(5)=resdeslizamiento2;
+cointerseccionveh(6)=distvisual;
+cointerseccionveh(7)=caninter;
+cointerseccionveh(8)=gestvelo;
+cointerseccionveh(9)=tipointer3;
+cointerseccionveh(10)=volinter;
+cointerseccionveh(11)=veloperacion1;
+cointerseccionveh(12)=x6;
+cointerseccionveh(13)=E;
+%cointerseccionveh=[tipointer2,calinter,pendiente,alumbrado1,resdeslizamiento2,distvisual,caninter,gestvelo,tipointer3,volinter,veloperacion1,E];
+%Acceso a propiedades Coeficientes6
+coaccesopropiedadesveh=zeros(1,9);
+coaccesopropiedadesveh(1)=puntacceso1;
+coaccesopropiedadesveh(2)=tipomediana4;
+coaccesopropiedadesveh(3)=vacceso;
+coaccesopropiedadesveh(4)=puntacceso2;
+coaccesopropiedadesveh(5)=flujopre;
+coaccesopropiedadesveh(6)=veloperacion1;
+coaccesopropiedadesveh(7)=x7;
+coaccesopropiedadesveh(8)=F;
+coaccesopropiedadesveh(9)=x8;
+%coaccesopropiedadesveh=[puntacceso1,tipomediana4,vacceso,puntacceso2,flujopre,veloperacion1,F];
+%copropiedadesveh=double(coaccesopropiedadesveh);
+
+%COEFICIENTES PARA MOTOCICLETAS
+%Salida del camino (lado del conductor) Coeficientes1
+cosalidaconductormot=zeros(1,17);
+cosalidaconductormot(1)=anchocarril;
+cosalidaconductormot(2)=curvatura3;
+cosalidaconductormot(3)=calidadcurva3;
+cosalidaconductormot(4)=delineacion;
+cosalidaconductormot(5)=bandasonoraes;
+cosalidaconductormot(6)=estadosuperficie3;
+cosalidaconductormot(7)=pendiente;
+cosalidaconductormot(8)=resdeslizamiento3;
+cosalidaconductormot(9)=distconductor3;
+cosalidaconductormot(10)=objconductor3;
+cosalidaconductormot(11)=anchoespaldon3;
+cosalidaconductormot(12)=flujoext;
+cosalidaconductormot(13)=transitabilida;
+cosalidaconductormot(14)=veloperacion;
+cosalidaconductormot(15)=x9;
+cosalidaconductormot(16)=x10;
+cosalidaconductormot(17)=G;
+%cosalidaconductormot=[anchocarril,curvatura3,calidadcurva3,delineacion,bandasonoraes,estadosuperficie3,pendiente,resdeslizamiento3,distconductor3,objconductor3,anchoespaldon3,flujoext,transitabilida,veloperacion,G];
+%Salida del camino (lado del copiloto) Coeficientes2
+cosalidacopilotomot=zeros(1,16);
+cosalidacopilotomot(1)=anchocarril;
+cosalidacopilotomot(2)=curvatura3;
+cosalidacopilotomot(3)=calidadcurva3;
+cosalidacopilotomot(4)=delineacion;
+cosalidacopilotomot(5)=bandasonoraes;
+cosalidacopilotomot(6)=estadosuperficie3;
+cosalidacopilotomot(7)=pendiente;
+cosalidacopilotomot(8)=resdeslizamiento3;
+cosalidacopilotomot(9)=distcopiloto3;
+cosalidacopilotomot(10)=objcopiloto3;
+cosalidacopilotomot(11)=anchoespaldoncop3;
+cosalidacopilotomot(12)=flujoext;
+cosalidacopilotomot(13)=veloperacion;
+cosalidacopilotomot(14)=x9;
+cosalidacopilotomot(15)=x11;
+cosalidacopilotomot(16)=H;
+%cosalidacopilotomot=[anchocarril,curvatura3,calidadcurva3,delineacion,bandasonoraes,estadosuperficie3,pendiente,resdeslizamiento3,distcopiloto3,objcopiloto3,anchoespaldoncop3,flujoext,veloperacion,H];
+%Choque Frontal (perdida del control) Coeficientes3
+coperdidacontrolmot=zeros(1,14);
+coperdidacontrolmot(1)=anchocarril;
+coperdidacontrolmot(2)=curvatura3;
+coperdidacontrolmot(3)=calidadcurva3;
+coperdidacontrolmot(4)=delineacion;
+coperdidacontrolmot(5)=bandassonoras;
+coperdidacontrolmot(6)=estadosuperficie3;
+coperdidacontrolmot(7)=pendiente;
+coperdidacontrolmot(8)=resdeslizamiento3;
+coperdidacontrolmot(9)=tipomediana2;
+coperdidacontrolmot(10)=flujoext1;
+coperdidacontrolmot(11)=transitabilida;
+coperdidacontrolmot(12)=veloperacion1;
+coperdidacontrolmot(13)=x12;
+coperdidacontrolmot(14)=I;
+%coperdidacontrolmot=[anchocarril,curvatura3,calidadcurva3,delineacion,bandassonoras,estadosuperficie3,pendiente,resdeslizamiento3,tipomediana2,flujoext1,transitabilida,veloperacion1,I];
+%Choque Frontal (adelantamiento) Coeficientes4
+coadelantamientomot=zeros(1,9);
+coadelantamientomot(1)=pendiente;
+coadelantamientomot(2)=resdeslizamiento3;
+coadelantamientomot(3)=velodiferencial;
+coadelantamientomot(4)=ncarriles2;
+coadelantamientomot(5)=tipomediana3;
+coadelantamientomot(6)=cero;
+coadelantamientomot(7)=veloperacion1;
+coadelantamientomot(8)=x13;
+coadelantamientomot(9)=J;
+%coadelantamientomot=[pendiente,resdeslizamiento3,velodiferencial,ncarriles2,tipomediana3,cero,veloperacion1,J];
+%Interseccion Coeficientes5
+cointerseccionmot=zeros(1,13);
+cointerseccionmot(1)=tipointer4;
+cointerseccionmot(2)=calinter;
+cointerseccionmot(3)=pendiente;
+cointerseccionmot(4)=alumbrado1;
+cointerseccionmot(5)=resdeslizamiento3;
+cointerseccionmot(6)=distvisual;
+cointerseccionmot(7)=caninter;
+cointerseccionmot(8)=gestvelo;
+cointerseccionmot(9)=tipointer5;
+cointerseccionmot(10)=volinter2;
+cointerseccionmot(11)=veloperacion1;
+cointerseccionmot(12)=x14;
+cointerseccionmot(13)=K;
+%cointerseccionmot=[tipointer4,calinter,pendiente,alumbrado1,resdeslizamiento3,distvisual,caninter,gestvelo,tipointer5,volinter2,veloperacion1,K];
+%Acceso a propiedades Coeficientes6
+coaccesopropiedadesmot=zeros(1,7);
+coaccesopropiedadesmot(1)=puntacceso1;
+coaccesopropiedadesmot(2)=vacceso;
+coaccesopropiedadesmot(3)=puntacceso2;
+coaccesopropiedadesmot(4)=flujopre;
+coaccesopropiedadesmot(5)=veloperacion1;
+coaccesopropiedadesmot(6)=x15;
+coaccesopropiedadesmot(7)=ZX;
+%coaccesopropiedadesmot=[puntacceso1,vacceso,puntacceso2,flujopre,veloperacion1,ZX];
+%copropiedadesmot=double(coaccesopropiedadesmot);
+%A lo largo Coeficientes7
+colargomot=zeros(1,6);
+colargomot(1)=infmoto1;
+colargomot(2)=infmoto2;
+colargomot(3)=flujomoto;
+colargomot(4)=veloperacion1;
+colargomot(5)=L;
+colargomot(6)=x16;
+%colargomot=[infmoto1,infmoto2,flujomoto,veloperacion1,L];
+
+%COEFICIENTES PARA CICLISTAS
+%A lo largo Coeficientes1
+colargoci=zeros(1,18);
+colargoci(1)=infbici1;
+colargoci(2)=curvatura2;
+colargoci(3)=calidadcurva3;
+colargoci(4)=distvisual;
+colargoci(5)=anchocarril;
+colargoci(6)=delineacion;
+colargoci(7)=pendiente;
+colargoci(8)=estadosuperficie2;
+colargoci(9)=gestvelo;
+colargoci(10)=bandasonoraes;
+colargoci(11)=estveh;
+colargoci(12)=resdeslizamiento3;
+colargoci(13)=alumbrado2;
+colargoci(14)=infbici2;
+colargoci(15)=flujoext5;
+colargoci(16)=veloperacionbi;
+colargoci(17)=x17;
+colargoci(18)=M;
+%colargoci=[infbici1,curvatura2,calidadcurva3,distvisual,anchocarril,delineacion,pendiente,estadosuperficie2,gestvelo,bandasonoraes,estveh,resdeslizamiento3,alumbrado2,infbici2,flujoext5,veloperacionbi,M];
+%Salida del camino  Coeficientes2
+cosalidaci=zeros(1,17);
+cosalidaci(1)=anchocarril;
+cosalidaci(2)=curvatura2;
+cosalidaci(3)=calidadcurva3;
+cosalidaci(4)=delineacion;
+cosalidaci(5)=alumbrado2;
+cosalidaci(6)=estadosuperficie5;
+cosalidaci(7)=pendiente;
+cosalidaci(8)=resdeslizamiento3;
+cosalidaci(9)=distconductor4;
+cosalidaci(10)=objconductor4;
+cosalidaci(11)=distcopiloto4;
+cosalidaci(12)=objcopiloto4;
+cosalidaci(13)=flujoext5;
+cosalidaci(14)=veloperacionbi;
+cosalidaci(15)=x20;
+cosalidaci(16)=W;
+cosalidaci(17)=N;
+%cosalidaci=[anchocarril,curvatura2,calidadcurva3,delineacion,alumbrado2,estadosuperficie5,pendiente,resdeslizamiento3,distconductor4,objconductor4,distcopiloto4,objcopiloto4,flujoext5,veloperacionbi,N];
+%Interseccion Coeficientes3
+cointerseccionci=zeros(1,16);
+cointerseccionci(1)=tipointer6;
+cointerseccionci(2)=calinter;
+cointerseccionci(3)=pendiente;
+cointerseccionci(4)=resdeslizamiento3;
+cointerseccionci(5)=infbici3;
+cointerseccionci(6)=alumbrado2;
+cointerseccionci(7)=distvisual;
+cointerseccionci(8)=caninter;
+cointerseccionci(9)=gestvelo;
+cointerseccionci(10)=infcrucep;
+cointerseccionci(11)=tipointer5;
+cointerseccionci(12)=volinter3;
+cointerseccionci(13)=veloperacionbi;
+cointerseccionci(14)=x18;
+cointerseccionci(15)=O;
+cointerseccionci(16)=x19;
+%cointerseccionci=[tipointer6,calinter,pendiente,resdeslizamiento3,infbici3,alumbrado2,distvisual,caninter,gestvelo,infcrucep,tipointer5,volinter3,veloperacionbi,O];
+
+%COEFICIENTES PARA PEATONES
+%A lo largo (lado del conductor) Coeficientes1
+colargoconpe=zeros(1,18);
+colargoconpe(1)=aceconductor1;
+colargoconpe(2)=curvatura3;
+colargoconpe(3)=calidadcurva2;
+colargoconpe(4)=distvisual;
+colargoconpe(5)=anchocarril;
+colargoconpe(6)=delineacion;
+colargoconpe(7)=pendiente;
+colargoconpe(8)=estadosuperficie2;
+colargoconpe(9)=gestvelo;
+colargoconpe(10)=estveh;
+colargoconpe(11)=bandasonoraes;
+colargoconpe(12)=resdeslizamiento3;
+colargoconpe(13)=alumbrado3;
+colargoconpe(14)=aceconductor2;
+colargoconpe(15)=flujoext8;
+colargoconpe(16)=veloperacionpe;
+colargoconpe(17)=P;
+colargoconpe(18)=Y;
+%colargoci=[infbici1,curvatura2,calidadcurva3,distvisual,anchocarril,delineacion,pendiente,estadosuperficie2,gestvelo,bandasonoraes,estveh,resdeslizamiento3,alumbrado2,infbici2,flujoext5,veloperacionbi,M];
+%A lo largo (lado del copiloto) Coeficientes2
+colargocoppe=zeros(1,18);
+colargocoppe(1)=acecopiloto1;
+colargocoppe(2)=curvatura3;
+colargocoppe(3)=calidadcurva2;
+colargocoppe(4)=distvisual;
+colargocoppe(5)=anchocarril;
+colargocoppe(6)=delineacion;
+colargocoppe(7)=pendiente;
+colargocoppe(8)=estadosuperficie2;
+colargocoppe(9)=gestvelo;
+colargocoppe(10)=estveh;
+colargocoppe(11)=bandasonoraes;
+colargocoppe(12)=resdeslizamiento3;
+colargocoppe(13)=alumbrado3;
+colargocoppe(14)=acecopiloto2;
+colargocoppe(15)=flujoext8;
+colargocoppe(16)=veloperacionpe;
+colargocoppe(17)=R;
+colargocoppe(18)=S;
+%Cruce peatonal (via inspecionada) Coeficientes3
+coinsppe=zeros(1,17);
+coinsppe(1)=ncarriles3;
+coinsppe(2)=tipomediana5;
+coinsppe(3)=infcrucep;
+coinsppe(4)=calicruce;
+coinsppe(5)=tipointer7;
+coinsppe(6)=calinter;
+coinsppe(7)=vallap;
+coinsppe(8)=resdeslizamiento2;
+coinsppe(9)=alumbrado3;
+coinsppe(10)=distvisual;
+coinsppe(11)=estveh;
+coinsppe(12)=gestvelo;
+coinsppe(13)=infcruceinsp1;
+coinsppe(14)=flujoext9;
+coinsppe(15)=veloperacionpe;
+coinsppe(16)=x21;
+coinsppe(17)=U;
+%cointerseccionci=[tipointer6,calinter,pendiente,resdeslizamiento3,infbici3,alumbrado2,distvisual,caninter,gestvelo,infcrucep,tipointer5,volinter3,veloperacionbi,O];
+%Cruce peatonal (via lateral) Coeficientes4
+colatpe=zeros(1,19);
+colatpe(1)=ncarriles3;
+colatpe(2)=tipomediana6;
+colatpe(3)=infcrucepela;
+colatpe(4)=calicruce;
+colatpe(5)=tipointer7;
+colatpe(6)=calinter;
+colatpe(7)=vallap;
+colatpe(8)=resdeslizamiento2;
+colatpe(9)=alumbrado3;
+colatpe(10)=distvisual;
+colatpe(11)=estveh;
+colatpe(12)=gestvelo;
+colatpe(13)=infcruceinsp1;
+colatpe(14)=infcruceinsp1at;
+colatpe(15)=veloperacionpe;
+colatpe(16)=x22;
+colatpe(17)=V;
+colatpe(18)=x23;
+colatpe(19)=x24;
+%colargoconpe,colargocoppe,coinsppe,colatpe,
 end
 
