@@ -459,8 +459,8 @@ if ncarrile==2 && flujoex<56001
     flujoy3=0;
 elseif ncarrile==2 && flujoex>=56001 && flujoex<72001
     flujoy3=0.00314465408805032;
-elseif ncarrile==2 && flujoex>=72001 && flujoex<80000  
-    flujoy3= (23.555*SATP2) + 0.8148;
+elseif ncarrile==2 && flujoex>=72001 && flujoex<80001  
+    flujoy3= (0.0425*SATP2) - 0.0346;
 elseif ncarrile==2 && flujoex>=80001
     flujoy3=0.00786163522012579
 end
@@ -3166,19 +3166,19 @@ elseif acecopilot==7
 end
 %Probabilidad
 R=acecopiloto1*curvatura3*calidadcurva2*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*estveh*bandasonoraes*resdeslizamiento2*alumbrado2;
-if aceconducto==1
+if acecopilot==1
      acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==2
+elseif acecopilot==2
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==3
+elseif acecopilot==3
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==4
+elseif acecopilot==4
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==5
+elseif acecopilot==5
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==6
+elseif acecopilot==6
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==7
+elseif acecopilot==7
         acecopiloto2=acecopiloto(1,2);
 end
 %Cruce peatonal (vía inpseccionada)
