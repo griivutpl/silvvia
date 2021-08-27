@@ -404,149 +404,61 @@ end
 
 %Velocidad de operacion (aqui toma el +10km/h)
 veloperacio=x(52);
-if veloperacio==150
+limitevelo=x(49);
+veloperaciom=max(limitevelo,veloperacio);
+if veloperaciom==150
     veloperacion=1;
-elseif veloperacio==145
+elseif veloperaciom==145
     veloperacion=0.91;
-elseif veloperacio==140
+elseif veloperaciom==140
          veloperacion=0.81;
-elseif veloperacio==135
+elseif veloperaciom==135
          veloperacion=0.73;
-elseif veloperacio==130
+elseif veloperaciom==130
          veloperacion=0.66;
-elseif veloperacio==125
+elseif veloperaciom==125
          veloperacion=0.58;
-elseif veloperacio==120
+elseif veloperaciom==120
         veloperacion=0.51;
-elseif veloperacio==115
+elseif veloperaciom==115
          veloperacion=0.44;
-elseif veloperacio==110
+elseif veloperaciom==110
          veloperacion=0.39;
-elseif veloperacio==105
+elseif veloperaciom==105
          veloperacion=0.34;
-elseif veloperacio==100
+elseif veloperaciom==100
          veloperacion=0.29;
-elseif veloperacio==95
+elseif veloperaciom==95
          veloperacion=0.25;  
-elseif veloperacio==90
+elseif veloperaciom==90
          veloperacion=0.21;
-elseif veloperacio==85
+elseif veloperaciom==85
          veloperacion=0.18;
-elseif veloperacio==80
+elseif veloperaciom==80
          veloperacion=0.15;
-elseif veloperacio==75
+elseif veloperaciom==75
          veloperacion=0.11;
-elseif veloperacio==70
+elseif veloperaciom==70
          veloperacion=0.1;
-elseif veloperacio==65
+elseif veloperaciom==65
          veloperacion=0.08;
-elseif veloperacio==60
+elseif veloperaciom==60
          veloperacion=0.06;
-elseif veloperacio==55
+elseif veloperaciom==55
          veloperacion=0.05;
-elseif veloperacio==50
+elseif veloperaciom==50
          veloperacion=0.04;
-elseif veloperacio==45
+elseif veloperaciom==45
          veloperacion=0.03;
-elseif veloperacio==40
+elseif veloperaciom==40
          veloperacion=0.02;
-elseif veloperacio==35
+elseif veloperaciom==35
          veloperacion=0.01;
-elseif veloperacio==30
+elseif veloperaciom==30
          veloperacion=0;
-else veloperacio==0
+else veloperaciom==0
          veloperacion=0;
 end
-
-%Reducción prevista de los MLG (si la medida se instalara por si sola)
-OVsalidacaminoconductor=zeros(1,12);
-OVsalidacaminoconductor(1)=anchocarril;
-OVsalidacaminoconductor(2)=curvatura2;
-OVsalidacaminoconductor(3)=calidadcurva2;
-OVsalidacaminoconductor(4)=delineacion;
-OVsalidacaminoconductor(5)=bandasonoraes;
-OVsalidacaminoconductor(6)=estadosuperficie2;
-OVsalidacaminoconductor(7)=pendiente;
-OVsalidacaminoconductor(8)=resdeslizamiento2;
-OVsalidacaminoconductor(9)=objconductor2;
-OVsalidacaminoconductor(10)=distconductor2;
-OVsalidacaminoconductor(11)=anchoespaldon2;
-OVsalidacaminoconductor(12)=veloperacion
-
-OVsalidacaminoconductor2=y.Factores1
-
-for i=1:length(OVsalidacaminoconductor)
-    p(i+1)=((OVsalidacaminoconductor(i)-OVsalidacaminoconductor2(i))*100)/((OVsalidacaminoconductor(i)));
-end
-OVsalidacaminoconductor3=p(2:end);
-TF = isnan(OVsalidacaminoconductor3);
-OVsalidacaminoconductor3(TF) = 0;
-
-%Reducción MGL (contramedida aplicada sola) - Método aditivo
-for j=1:length(OVsalidacaminoconductor3)
-    q(j+1)=MLG*(OVsalidacaminoconductor3(j)/100);
-end
-OVsalidacaminoconductor4=q(2:end);
-Total=sum(OVsalidacaminoconductor4);
-
-%Reducción MGL - Método multiplicativo
-for k=1:length(OVsalidacaminoconductor4)
-    s(k+1)=1-(OVsalidacaminoconductor3(k)/100);
-end
-OVsalidacaminoconductor5=s(2:end);
-MLG_anual=MLG*(1-(prod(OVsalidacaminoconductor5)))
-
-%Factor de corrección de multiples medidas de mejora
-FCAC=MLG_anual/Total;
-
-%Reducción MGL - usando el fator de corrección de multiples medidas de mejora
-for h=1:length(OVsalidacaminoconductor5)
-    t(h+1)=OVsalidacaminoconductor4(h)*FCAC;
-end
-OVsalidacaminoconductor6=t(2:end);
-Reduccion_total_MGL=sum(OVsalidacaminoconductor6);
-TFx = isnan(Reduccion_total_MGL);
-Reduccion_total_MGL(TFx)=0;
-
-%----Salida de camino------Lado del copiloto
-%Factores de los atributos codificados
-%Severidad en la carretera: distancia del lado del copiloto
-distcopilot=x(3);
-if distcopilot==0 %No aplica contramedida
-  distcopiloto=0;
-end
-if distcopilot==1
-    for i=1:3
-  distcopiloto(1,i)=T9(1,i);
-    end
-end
-if distcopilot==2
-        for i=1:3
-  distcopiloto(1,i)=T9(2,i);
-    end
-end
-if distcopilot==3
-        for i=1:3
-  distcopiloto(1,i)=T9(3,i);
-    end
-end
-if distcopilot==4
-        for i=1:3
-  distcopiloto(1,i)=T9(4,i);
-    end
-end
-if distcopilot==0
-  distcopiloto2=0;
-elseif distcopilot==1
-  distcopiloto2=distcopiloto(1,1);
-elseif distcopilot==2
-  distcopiloto2=distcopiloto(1,1);
-elseif distcopilot==3
-  distcopiloto2=distcopiloto(1,1);
-else distcopilot==4
-  distcopiloto2=distcopiloto(1,1);
-end
-
 
 %Severidad en la carretera: objeto del lado del copiloto
 objcopilot=x(4);
@@ -676,6 +588,197 @@ else objcopilot==17
  objcopiloto2=objcopiloto(1,1);
 end
 
+velosalida=veloperacion;
+if veloperaciom==150 && objconducto>=1 && objcopilot==10
+    velosalida=1;
+elseif veloperaciom==145 && objconducto>=1 && objcopilot==10
+    velosalida=0.97;
+elseif veloperaciom==140 && objconducto>=1 && objcopilot==10
+         velosalida=0.93; 
+elseif veloperaciom==135 && objconducto>=1 && objcopilot==10
+         velosalida=0.90;
+elseif veloperaciom==130 && objconducto>=1 && objcopilot==10
+         velosalida=0.87;
+elseif veloperaciom==125 && objconducto>=1 && objcopilot==10
+         velosalida=0.83;
+elseif veloperaciom==120 && objconducto>=1 && objcopilot==10
+        velosalida=0.80;
+elseif veloperaciom==115 && objconducto>=1 && objcopilot==10
+         velosalida=0.77;
+elseif veloperaciom==110 && objconducto>=1 && objcopilot==10
+         velosalida=0.73;
+elseif veloperaciom==105 && objconducto>=1 && objcopilot==10
+         velosalida=0.70;
+elseif veloperaciom==100 && objconducto>=1 && objcopilot==10
+         velosalida=0.67;
+elseif veloperaciom==95 && objconducto>=1 && objcopilot==10
+         velosalida=0.63;  
+elseif veloperaciom==90 && objconducto>=1 && objcopilot==10
+         velosalida=0.60;
+elseif veloperaciom==85 && objconducto>=1 && objcopilot==10
+         velosalida=0.57;
+elseif veloperaciom==80 && objconducto>=1 && objcopilot==10
+         velosalida=0.53;
+elseif veloperaciom==75 && objconducto>=1 && objcopilot==10
+         velosalida=0.50;
+elseif veloperaciom==70 && objconducto>=1 && objcopilot==10
+         velosalida=0.47;
+elseif veloperaciom==65 && objconducto>=1 && objcopilot==10
+         velosalida=0.43;
+elseif veloperaciom==60 && objconducto>=1 && objcopilot==10
+         velosalida=0.40;
+elseif veloperaciom==55 && objconducto>=1 && objcopilot==10
+         velosalida=0.36;
+elseif veloperaciom==50 && objconducto>=1 && objcopilot==10
+         velosalida=0.33;
+elseif veloperaciom==45 && objconducto>=1 && objcopilot==10
+         velosalida=0.30;
+elseif veloperaciom==40 && objconducto>=1 && objcopilot==10
+         velosalida=0.27;
+elseif veloperaciom==35 && objconducto>=1 && objcopilot==10
+         velosalida=0.23;
+elseif veloperaciom==30 && objconducto>=1 && objcopilot==10
+         velosalida=0.2;
+elseif veloperaciom==150 && objcopilot>=1 && objconducto==10
+    velosalida=1;
+elseif veloperaciom==145 && objcopilot>=1 && objconducto==10
+    velosalida=0.97;
+elseif veloperaciom==140 && objcopilot>=1 && objconducto==10
+         velosalida=0.93; 
+elseif veloperaciom==135 && objcopilot>=1 && objconducto==10
+         velosalida=0.90;
+elseif veloperaciom==130 && objcopilot>=1 && objconducto==10
+         velosalida=0.87;
+elseif veloperaciom==125 && objcopilot>=1 && objconducto==10
+         velosalida=0.83;
+elseif veloperaciom==120 && objcopilot>=1 && objconducto==10
+        velosalida=0.80;
+elseif veloperaciom==115 && objcopilot>=1 && objconducto==10
+         velosalida=0.77;
+elseif veloperaciom==110 && objcopilot>=1 && objconducto==10
+         velosalida=0.73;
+elseif veloperaciom==105 && objcopilot>=1 && objconducto==10
+         velosalida=0.70;
+elseif veloperaciom==100 && objcopilot>=1 && objconducto==10
+         velosalida=0.67;
+elseif veloperaciom==95 && objcopilot>=1 && objconducto==10
+         velosalida=0.63;  
+elseif veloperaciom==90 && objcopilot>=1 && objconducto==10
+         velosalida=0.60;
+elseif veloperaciom==85 && objcopilot>=1 && objconducto==10
+         velosalida=0.57;
+elseif veloperaciom==80 && objcopilot>=1 && objconducto==10
+         velosalida=0.53;
+elseif veloperaciom==75 && objcopilot>=1 && objconducto==10
+         velosalida=0.50;
+elseif veloperaciom==70 && objcopilot>=1 && objconducto==10
+         velosalida=0.47;
+elseif veloperaciom==65 && objcopilot>=1 && objconducto==10
+         velosalida=0.43;
+elseif veloperaciom==60 && objcopilot>=1 && objconducto==10
+         velosalida=0.40;
+elseif veloperaciom==55 && objcopilot>=1 && objconducto==10
+         velosalida=0.36;
+elseif veloperaciom==50 && objcopilot>=1 && objconducto==10
+         velosalida=0.33;
+elseif veloperaciom==45 && objcopilot>=1 && objconducto==10
+         velosalida=0.30;
+elseif veloperaciom==40 && objcopilot>=1 && objconducto==10
+         velosalida=0.27;
+elseif veloperaciom==35 && objcopilot>=1 && objconducto==10
+         velosalida=0.23;
+elseif veloperaciom==30 && objcopilot>=1 && objconducto==10
+         velosalida=0.2;       
+end
+%Reducción prevista de los MLG (si la medida se instalara por si sola)
+OVsalidacaminoconductor=zeros(1,12);
+OVsalidacaminoconductor(1)=anchocarril;
+OVsalidacaminoconductor(2)=curvatura2;
+OVsalidacaminoconductor(3)=calidadcurva2;
+OVsalidacaminoconductor(4)=delineacion;
+OVsalidacaminoconductor(5)=bandasonoraes;
+OVsalidacaminoconductor(6)=estadosuperficie2;
+OVsalidacaminoconductor(7)=pendiente;
+OVsalidacaminoconductor(8)=resdeslizamiento2;
+OVsalidacaminoconductor(9)=objconductor2;
+OVsalidacaminoconductor(10)=distconductor2;
+OVsalidacaminoconductor(11)=anchoespaldon2;
+OVsalidacaminoconductor(12)=velosalida;
+
+OVsalidacaminoconductor2=y.Factores1
+
+for i=1:length(OVsalidacaminoconductor)
+    p(i+1)=((OVsalidacaminoconductor(i)-OVsalidacaminoconductor2(i))*100)/((OVsalidacaminoconductor(i)));
+end
+OVsalidacaminoconductor3=p(2:end);
+TF = isnan(OVsalidacaminoconductor3);
+OVsalidacaminoconductor3(TF) = 0;
+
+%Reducción MGL (contramedida aplicada sola) - Método aditivo
+for j=1:length(OVsalidacaminoconductor3)
+    q(j+1)=MLG*(OVsalidacaminoconductor3(j)/100);
+end
+OVsalidacaminoconductor4=q(2:end);
+Total=sum(OVsalidacaminoconductor4);
+
+%Reducción MGL - Método multiplicativo
+for k=1:length(OVsalidacaminoconductor4)
+    s(k+1)=1-(OVsalidacaminoconductor3(k)/100);
+end
+OVsalidacaminoconductor5=s(2:end);
+MLG_anual=MLG*(1-(prod(OVsalidacaminoconductor5)))
+
+%Factor de corrección de multiples medidas de mejora
+FCAC=MLG_anual/Total;
+
+%Reducción MGL - usando el fator de corrección de multiples medidas de mejora
+for h=1:length(OVsalidacaminoconductor5)
+    t(h+1)=OVsalidacaminoconductor4(h)*FCAC;
+end
+OVsalidacaminoconductor6=t(2:end);
+Reduccion_total_MGL=sum(OVsalidacaminoconductor6);
+TFx = isnan(Reduccion_total_MGL);
+Reduccion_total_MGL(TFx)=0;
+
+%----Salida de camino------Lado del copiloto
+%Factores de los atributos codificados
+%Severidad en la carretera: distancia del lado del copiloto
+distcopilot=x(3);
+if distcopilot==0 %No aplica contramedida
+  distcopiloto=0;
+end
+if distcopilot==1
+    for i=1:3
+  distcopiloto(1,i)=T9(1,i);
+    end
+end
+if distcopilot==2
+        for i=1:3
+  distcopiloto(1,i)=T9(2,i);
+    end
+end
+if distcopilot==3
+        for i=1:3
+  distcopiloto(1,i)=T9(3,i);
+    end
+end
+if distcopilot==4
+        for i=1:3
+  distcopiloto(1,i)=T9(4,i);
+    end
+end
+if distcopilot==0
+  distcopiloto2=0;
+elseif distcopilot==1
+  distcopiloto2=distcopiloto(1,1);
+elseif distcopilot==2
+  distcopiloto2=distcopiloto(1,1);
+elseif distcopilot==3
+  distcopiloto2=distcopiloto(1,1);
+else distcopilot==4
+  distcopiloto2=distcopiloto(1,1);
+end
+
 %Ancho de espaldón pavimentado (lado del copiloto)
 anchoespaldonco=x(7);
 if anchoespaldonco==0 %No aplica contramedida
@@ -726,7 +829,7 @@ OVsalidacaminocopiloto(8)=resdeslizamiento2;
 OVsalidacaminocopiloto(9)=objcopiloto2;
 OVsalidacaminocopiloto(10)=distcopiloto2;
 OVsalidacaminocopiloto(11)=anchoespaldoncop2;
-OVsalidacaminocopiloto(12)=veloperacion
+OVsalidacaminocopiloto(12)=velosalida
 
 OVsalidacaminocopiloto2=y.Factores2
 
@@ -1360,6 +1463,109 @@ else tipointe==16
     tipointer3=tipointer(1,2);
 end
 
+%Velocidad para la intersección
+velointer=veloperacion;
+if veloperaciom==150 && tipointe==12
+    velointer=1;
+elseif veloperaciom==145 && tipointe==12
+    velointer=0.97;
+elseif veloperaciom==140 && tipointe==12
+         velointer=0.93; 
+elseif veloperaciom==135 && tipointe==12
+         velointer=0.90;
+elseif veloperaciom==130 && tipointe==12
+         velointer=0.87;
+elseif veloperaciom==125 && tipointe==12
+         velointer=0.83;
+elseif veloperaciom==120 && tipointe==12
+        velointer=0.80;
+elseif veloperaciom==115 && tipointe==12
+         velointer=0.77;
+elseif veloperaciom==110 && tipointe==12
+         velointer=0.73;
+elseif veloperaciom==105 && tipointe==12
+         velointer=0.70;
+elseif veloperaciom==100 && tipointe==12
+         velointer=0.67;
+elseif veloperaciom==95 && tipointe==12
+         velointer=0.63;  
+elseif veloperaciom==90 && tipointe==12
+         velointer=0.60;
+elseif veloperaciom==85 && tipointe==12
+         velointer=0.57;
+elseif veloperaciom==80 && tipointe==12
+         velointer=0.53;
+elseif veloperaciom==75 && tipointe==12
+         velointer=0.50;
+elseif veloperaciom==70 && tipointe==12
+         velointer=0.47;
+elseif veloperaciom==65 && tipointe==12
+         velointer=0.43;
+elseif veloperaciom==60 && tipointe==12
+         velointer=0.40;
+elseif veloperaciom==55 && tipointe==12
+         velointer=0.36;
+elseif veloperaciom==50 && tipointe==12
+         velointer=0.33;
+elseif veloperaciom==45 && tipointe==12
+         velointer=0.30;
+elseif veloperaciom==40 && tipointe==12
+         velointer=0.27;
+elseif veloperaciom==35 && tipointe==12
+         velointer=0.23;
+elseif veloperaciom==30 && tipointe==12
+         velointer=0.2;
+elseif veloperaciom==150 && tipointe==13
+    velointer=1;
+elseif veloperaciom==145 && tipointe==13
+    velointer=0.97;
+elseif veloperaciom==140 && tipointe==13
+         velointer=0.93; 
+elseif veloperaciom==135 && tipointe==13
+         velointer=0.90;
+elseif veloperaciom==130 && tipointe==13
+         velointer=0.87;
+elseif veloperaciom==125 && tipointe==13
+         velointer=0.83;
+elseif veloperaciom==120 && tipointe==13
+        velointer=0.80;
+elseif veloperaciom==115 && tipointe==13
+         velointer=0.77;
+elseif veloperaciom==110 && tipointe==13
+         velointer=0.73;
+elseif veloperaciom==105 && tipointe==13
+         velointer=0.70;
+elseif veloperaciom==100 && tipointe==13
+         velointer=0.67;
+elseif veloperaciom==95 && tipointe==13
+         velointer=0.63;  
+elseif veloperaciom==90 && tipointe==13
+         velointer=0.60;
+elseif veloperaciom==85 && tipointe==13
+         velointer=0.57;
+elseif veloperaciom==80 && tipointe==13
+         velointer=0.53;
+elseif veloperaciom==75 && tipointe==13
+         velointer=0.50;
+elseif veloperaciom==70 && tipointe==13
+         velointer=0.47;
+elseif veloperaciom==65 && tipointe==13
+         velointer=0.43;
+elseif veloperaciom==60 && tipointe==13
+         velointer=0.40;
+elseif veloperaciom==55 && tipointe==13
+         velointer=0.36;
+elseif veloperaciom==50 && tipointe==13
+         velointer=0.33;
+elseif veloperaciom==45 && tipointe==13
+         velointer=0.30;
+elseif veloperaciom==40 && tipointe==13
+         velointer=0.27;
+elseif veloperaciom==35 && tipointe==13
+         velointer=0.23;
+elseif veloperaciom==30 && tipointe==13
+         velointer=0.2;
+end
 
 %Reducción prevista de los MLG (si la medida se instalara por si sola)
 OVintersecciones=zeros(1,10);
@@ -1372,7 +1578,7 @@ OVintersecciones(6)=distvisual;
 OVintersecciones(7)=caninter; 
 OVintersecciones(8)=gestvelo;
 OVintersecciones(9)=tipointer3;
-OVintersecciones(10)=veloperacion
+OVintersecciones(10)=velointer
 
 OVintersecciones2=y.Factores5
 
@@ -1435,10 +1641,8 @@ elseif tipomedian==8
  tipomediana4=tipomediana(1,4);
 elseif tipomedian==9
  tipomediana4=tipomediana(1,4);
- Matri1(10)=tipomediana4;
 elseif tipomedian==10
  tipomediana4=tipomediana(1,4);
- Matri1(10)=tipomediana4;
 elseif tipomedian==11
  tipomediana4=tipomediana(1,4);
 elseif tipomedian==12
@@ -1675,7 +1879,7 @@ Motosalidacaminoconductor(8)=resdeslizamiento3;
 Motosalidacaminoconductor(9)=objconductor3;
 Motosalidacaminoconductor(10)=distconductor3;
 Motosalidacaminoconductor(11)=anchoespaldon2;
-Motosalidacaminoconductor(12)=veloperacion
+Motosalidacaminoconductor(12)=velosalida
 
 Motosalidacaminoconductor2=y.Factores7
 
@@ -1786,7 +1990,7 @@ Motosalidacaminocopiloto(8)=resdeslizamiento3;
 Motosalidacaminocopiloto(9)=objcopiloto3;
 Motosalidacaminocopiloto(10)=distcopiloto3;
 Motosalidacaminocopiloto(11)=anchoespaldoncop3;
-Motosalidacaminocopiloto(12)=veloperacion 
+Motosalidacaminocopiloto(12)=velosalida
 
 Motosalidacaminocopiloto2=y.Factores8
 
@@ -2001,7 +2205,7 @@ Motointersecciones(6)=distvisual;
 Motointersecciones(7)=caninter; 
 Motointersecciones(8)=gestvelo;
 Motointersecciones(9)=tipointer5;
-Motointersecciones(10)=veloperacion 
+Motointersecciones(10)=velointer 
 
 Motointersecciones2=y.Factores11
 if x(25)==11
@@ -2291,58 +2495,58 @@ else infbic==7
         infbici2=infbici(1,3);
 end
 %Velocidad de operacion (+10 km/h)
-veloperacio=x(52);
- if veloperacio==150
+%veloperacio=x(52);
+ if veloperaciom==150
         veloperacionbi=1;
- elseif veloperacio==145
+ elseif veloperaciom==145
          veloperacionbi=0.97;
- elseif veloperacio==140
+ elseif veloperaciom==140
          veloperacionbi=0.93;
- elseif veloperacio==135
+ elseif veloperaciom==135
          veloperacionbi=0.9;
- elseif veloperacio==130
+ elseif veloperaciom==130
          veloperacionbi=0.87;
- elseif veloperacio==125
+ elseif veloperaciom==125
          veloperacionbi=0.83;
- elseif veloperacio==120
+ elseif veloperaciom==120
         veloperacionbi=0.8;
- elseif veloperacio==115
+ elseif veloperaciom==115
          veloperacionbi=0.77;
- elseif veloperacio==110
+ elseif veloperaciom==110
          veloperacionbi=0.73;
- elseif veloperacio==105
+ elseif veloperaciom==105
          veloperacionbi=0.7;
- elseif veloperacio==100
+ elseif veloperaciom==100
          veloperacionbi=0.67;
- elseif veloperacio==95
+ elseif veloperaciom==95
          veloperacionbi=0.63;  
- elseif veloperacio==90
+ elseif veloperaciom==90
          veloperacionbi=0.53;
- elseif veloperacio==85
+ elseif veloperaciom==85
          veloperacionbi=0.44;
- elseif veloperacio==80
+ elseif veloperaciom==80
          veloperacionbi=0.36;
- elseif veloperacio==75
+ elseif veloperaciom==75
          veloperacionbi=0.28;
- elseif veloperacio==70
+ elseif veloperaciom==70
          veloperacionbi=0.22;
- elseif veloperacio==65
+ elseif veloperaciom==65
          veloperacionbi=0.18;
- elseif veloperacio==60
+ elseif veloperaciom==60
          veloperacionbi=0.14;
- elseif veloperacio==55
+ elseif veloperaciom==55
          veloperacionbi=0.1;
- elseif veloperacio==50
+ elseif veloperaciom==50
          veloperacionbi=0.07;
- elseif veloperacio==45
+ elseif veloperaciom==45
          veloperacionbi=0.05;
- elseif veloperacio==40
+ elseif veloperaciom==40
          veloperacionbi=0.03;
- elseif veloperacio==35
+ elseif veloperaciom==35
          veloperacionbi=0.02;
- elseif veloperacio==30
+ elseif veloperaciom==30
          veloperacionbi=0.01;
- else veloperacio==0
+ else veloperaciom==0
          veloperacionbi=0;
  end
  
@@ -2752,7 +2956,7 @@ end
 %Peatones
 %A lo largo (lado del conductor) 
 %Acera-lado de conductor --probabilidad
-T22=[0 0;0.075 0;0.09 0;0.1 0;20 90;5 50;6 60];
+T22=[0 90;0.075 90;0.09 90;0.1 90;20 90;5 90;6 90];
 aceconducto=x(43);
 if aceconducto==0
     aceconductor=0
@@ -2829,58 +3033,58 @@ else aceconducto==7
 end
 
 %Velocidad de operacion (+10 km/h)
-veloperacio=x(52);
- if veloperacio==150
+%veloperacio=x(52);
+ if veloperaciom==150
         veloperacionpe=1;
- elseif veloperacio==145
+ elseif veloperaciom==145
          veloperacionpe=0.97;
- elseif veloperacio==140
+ elseif veloperaciom==140
          veloperacionpe=0.93;
- elseif veloperacio==135
+ elseif veloperaciom==135
          veloperacionpe=0.9;
- elseif veloperacio==130
+ elseif veloperaciom==130
          veloperacionpe=0.87;
- elseif veloperacio==125
+ elseif veloperaciom==125
          veloperacionpe=0.83;
- elseif veloperacio==120
+ elseif veloperaciom==120
         veloperacionpe=0.8;
- elseif veloperacio==115
+ elseif veloperaciom==115
          veloperacionpe=0.77;
- elseif veloperacio==110
+ elseif veloperaciom==110
          veloperacionpe=0.73;
- elseif veloperacio==105
+ elseif veloperaciom==105
          veloperacionpe=0.7;
- elseif veloperacio==100
+ elseif veloperaciom==100
          veloperacionpe=0.67;
- elseif veloperacio==95
+ elseif veloperaciom==95
          veloperacionpe=0.63;  
- elseif veloperacio==90
+ elseif veloperaciom==90
          veloperacionpe=0.6;
- elseif veloperacio==85
+ elseif veloperaciom==85
          veloperacionpe=0.57;
- elseif veloperacio==80
+ elseif veloperaciom==80
          veloperacionpe=0.53;
- elseif veloperacio==75
+ elseif veloperaciom==75
          veloperacionpe=0.46;
- elseif veloperacio==70
+ elseif veloperaciom==70
          veloperacionpe=0.38;
- elseif veloperacio==65
+ elseif veloperaciom==65
          veloperacionpe=0.3;
- elseif veloperacio==60
+ elseif veloperaciom==60
          veloperacionpe=0.22;
- elseif veloperacio==55
+ elseif veloperaciom==55
          veloperacionpe=0.16; 
- elseif veloperacio==50
+ elseif veloperaciom==50
          veloperacionpe=0.12; %0.16
- elseif veloperacio==45
+ elseif veloperaciom==45
          veloperacionpe=0.08;
- elseif veloperacio==40
+ elseif veloperaciom==40
          veloperacionpe=0.05;
- elseif veloperacio==35
+ elseif veloperaciom==35
          veloperacionpe=0.03;
- elseif veloperacio==30
+ elseif veloperaciom==30
          veloperacionpe=0.01;
- else veloperacio==0
+ else veloperaciom==0
          veloperacionpe=0;        
  end
  
@@ -2997,21 +3201,21 @@ else acecopilot==7
 end
 
 %Acera-lado de copiloto--severidad
-if aceconducto==0
+if acecopilot==0
      acecopiloto2=0;
-elseif aceconducto==1
+elseif acecopilot==1
      acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==2
+elseif acecopilot==2
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==3
+elseif acecopilot==3
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==4
+elseif acecopilot==4
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==5
+elseif acecopilot==5
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==6
+elseif acecopilot==6
         acecopiloto2=acecopiloto(1,2);
-else aceconducto==7
+else acecopilot==7
         acecopiloto2=acecopiloto(1,2);
 end
 

@@ -199,9 +199,9 @@ d43=(c43*100)/(1/1000*sum(x.Distancia));
 d44=(c44*100)/(1/1000*sum(x.Distancia));
 
 %Sexto subatributo
-a45=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Ancho (≥ 2,4 m)'));
-a46=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Medio (≥ 1,0 m a 2,4 m)'));
-a47=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Estrecho (≥ 0 m a 1,0 m)'));
+a45=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Ancho (≥ 2.4 m)'));
+a46=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Medio (≥ 1.0 m a 2.4 m)'));
+a47=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Estrecho (≥ 0 m a 1.0 m)'));
 a48=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_conductor,'Ninguno'));
 
 b45=x.Distancia(a45);
@@ -220,9 +220,9 @@ d47=(c47*100)/(1/1000*sum(x.Distancia));
 d48=(c48*100)/(1/1000*sum(x.Distancia));
 
 %Séptimo subatributo
-a49=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Ancho (≥ 2,4 m)'));
-a50=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Medio (≥ 1,0 m a 2,4 m)'));
-a51=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Estrecho (≥ 0 m a 1,0 m)'));
+a49=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Ancho (≥ 2.4 m)'));
+a50=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Medio (≥ 1.0 m a 2.4 m)'));
+a51=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Estrecho (≥ 0 m a 1.0 m)'));
 a52=find(strcmpi(x.Ancho_de_espaldon_pavimentado_lado_del_copiloto,'Ninguno'));
 
 b49=x.Distancia(a49);

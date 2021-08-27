@@ -200,12 +200,12 @@ i44=(h44*100)/(1/1000*sum(x.Distancia));
 
 %Octavo subatributo
 f45=find(strcmpi(x.Acera_lado_del_conductor,'Barrera física'));
-f46=find(strcmpi(x.Acera_lado_del_conductor,'Separación no física ≥ 3,0 m'));
-f47=find(strcmpi(x.Acera_lado_del_conductor,'Separación no física 1,0 m a 3,0 m'));
-f48=find(strcmpi(x.Acera_lado_del_conductor,'Separación no física 0 m < 1,0 m'));
+f46=find(strcmpi(x.Acera_lado_del_conductor,'Separación no física ≥ 3.0 m'));
+f47=find(strcmpi(x.Acera_lado_del_conductor,'Separación no física 1.0 m a 3.0 m'));
+f48=find(strcmpi(x.Acera_lado_del_conductor,'Separación no física 0 m < 1.0 m'));
 f49=find(strcmpi(x.Acera_lado_del_conductor,'Ninguno'));
-f50=find(strcmpi(x.Acera_lado_del_conductor,'Camino informal ≥ 1,0 m'));
-f51=find(strcmpi(x.Acera_lado_del_conductor,'Camino informal de 0 m a < 1,0 m'));
+f50=find(strcmpi(x.Acera_lado_del_conductor,'Camino informal ≥ 1.0 m'));
+f51=find(strcmpi(x.Acera_lado_del_conductor,'Camino informal de 0 m a < 1.0 m'));
 
 g45=x.Distancia(f45);
 g46=x.Distancia(f46);
@@ -233,12 +233,12 @@ i51=(h51*100)/(1/1000*sum(x.Distancia));
 
 %Noveno subatributo
 f52=find(strcmpi(x.Acera_lado_del_copiloto,'Barrera física'));
-f53=find(strcmpi(x.Acera_lado_del_copiloto,'Separación no física ≥ 3,0 m'));
-f54=find(strcmpi(x.Acera_lado_del_copiloto,'Separación no física 1,0 m a 3,0 m'));
-f55=find(strcmpi(x.Acera_lado_del_copiloto,'Separación no física 0 m < 1,0 m'));
+f53=find(strcmpi(x.Acera_lado_del_copiloto,'Separación no física ≥ 3.0 m'));
+f54=find(strcmpi(x.Acera_lado_del_copiloto,'Separación no física 1.0 m a 3.0 m'));
+f55=find(strcmpi(x.Acera_lado_del_copiloto,'Separación no física 0 m < 1.0 m'));
 f56=find(strcmpi(x.Acera_lado_del_copiloto,'Ninguno'));
-f57=find(strcmpi(x.Acera_lado_del_copiloto,'Camino informal ≥ 1,0 m'));
-f58=find(strcmpi(x.Acera_lado_del_copiloto,'Camino informal de 0 m a < 1,0 m'));
+f57=find(strcmpi(x.Acera_lado_del_copiloto,'Camino informal ≥ 1.0 m'));
+f58=find(strcmpi(x.Acera_lado_del_copiloto,'Camino informal de 0 m a < 1.0 m'));
 
 g52=x.Distancia(f52);
 g53=x.Distancia(f53);
@@ -298,7 +298,7 @@ f65=find(strcmpi(x.Infraestructura_para_bicicletas,'Ciclovía fuera de la carret
 f66=find(strcmpi(x.Infraestructura_para_bicicletas,'Ciclovía fuera de la carretera sin barrera'));
 f67=find(strcmpi(x.Infraestructura_para_bicicletas,'Ciclovía en la carretera'));
 f68=find(strcmpi(x.Infraestructura_para_bicicletas,'Ninguno'));
-f69=find(strcmpi(x.Infraestructura_para_bicicletas,'Carril extra fuera de la calzada (≥  4,2 m)'));
+f69=find(strcmpi(x.Infraestructura_para_bicicletas,'Carril extra fuera de la calzada (≥ 4.2 m)'));
 f70=find(strcmpi(x.Infraestructura_para_bicicletas,'Vía compartida con señalización vertical'));
 f71=find(strcmpi(x.Infraestructura_para_bicicletas,'Ciclovía de uso compartido'));
 
