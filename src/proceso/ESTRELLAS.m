@@ -457,10 +457,10 @@ TPDAMAXP2=72001;
 SATP2=(flujoex/TPDAMAXP2);
 if ncarrile==2 && flujoex<56001
     flujoy3=0;
-elseif ncarrile==2 && flujoex>=56001 && flujoex<72001
+elseif ncarrile==2 && flujoex>=56001 && flujoex<72001;
     flujoy3=0.00314465408805032;
-elseif ncarrile==2 && flujoex>=72001 && flujoex<80000  
-    flujoy3= (23.555*SATP2) + 0.8148;
+elseif ncarrile==2 && flujoex>=72001 && flujoex<80001; 
+    flujoy3= (0.0425*SATP2) - 0.0346;
 elseif ncarrile==2 && flujoex>=80001
     flujoy3=0.00786163522012579
 end
@@ -512,7 +512,7 @@ elseif volinte==1
 end
 
 %5.PUNTOS DE ACCESO
-flujopre=0.01
+flujopre=0.01;
 
 %6.A LO LARGO
 %Un carril
@@ -541,27 +541,27 @@ elseif ncarrile==2 && flujoex>=20001 && flujoex<=24000
 elseif ncarrile==2 && flujoex>=24001 && flujoex<=28000  
     flujoy7=0.20754717;
 elseif ncarrile==2 && flujoex>=28001 && flujoex<=32000
-    flujoy7=(0.9623*SATP2) - 0.1667
+    flujoy7=(0.9623*SATP2) - 0.1667;
 elseif ncarrile==2 && flujoex>=32001 && flujoex<=36000  
     flujoy7=0.261006289;
 elseif ncarrile==2 && flujoex>=36001 && flujoex<=40000
-    flujoy7=(0.9057*SATP2) - 0.1918
+    flujoy7=(0.9057*SATP2) - 0.1918;
 elseif ncarrile==2 && flujoex>=40001 && flujoex<=44000  
     flujoy7=0.311320755;
 elseif ncarrile==2 && flujoex>=44001 && flujoex<=48000
-    flujoy7=(1.0472*SATP2) - 0.3286
+    flujoy7=(1.0472*SATP2) - 0.3286;
 elseif ncarrile==2 && flujoex>=48001 && flujoex<=52000  
     flujoy7=0.369496855;
 elseif ncarrile==2 && flujoex>=52001 && flujoex<=56000
-    flujoy7=(0.934*SATP2) - 0.305
+    flujoy7=(0.934*SATP2) - 0.305;
 elseif ncarrile==2 && flujoex>=56001 && flujoex<=60000  
     flujoy7=0.421383648;
 elseif ncarrile==2 && flujoex>=60001 && flujoex<=64000
-    flujoy7=(0.9057*SATP2) - 0.3333
+    flujoy7=(0.9057*SATP2) - 0.3333;
 elseif ncarrile==2 && flujoex>=64001 && flujoex<=68000  
     flujoy7=0.471698113;
 elseif ncarrile==2 && flujoex>=68001 && flujoex<=72000
-    flujoy7=(1.1038*SATP2) - 0.5708
+    flujoy7=(1.1038*SATP2) - 0.5708;
 elseif ncarrile==2 && flujoex>=72001  
     flujoy7=0.533018868;
 end
@@ -570,40 +570,40 @@ TPDAMAXL3=108001;
 SATL3=(flujoex/TPDAMAXL3);
 if ncarrile==3 && flujoex>=1 && flujoex<=8000
     flujoy7=0.045597484;
-elseif ncarrile==3 && flujoex>=8001 && flujoex<=1200
+elseif ncarrile==3 && flujoex>=8001 && flujoex<=12000
     flujoy7 = (1.4434*SATL3) - 0.0613;
 elseif ncarrile==3 && flujoex>=12001 && flujoex<=20000  
     flujoy7=0.099056604;
 elseif ncarrile==3 && flujoex>=20001 && flujoex<=24000
-    flujoy7= (1.4859*SATL3) - 0.1761
+    flujoy7= (1.4859*SATL3) - 0.1761;
 elseif ncarrile==3 && flujoex>=24001 && flujoex<=32000  
     flujoy7=0.15408805;
 elseif ncarrile==3 && flujoex>=32001 && flujoex<=36000
-    flujoy7= (1.4434*SATL3)  - 0.2736
+    flujoy7= (1.4434*SATL3)  - 0.2736;
 elseif ncarrile==3 && flujoex>=36001 && flujoex<=44000  
     flujoy7=0.20754717;
 elseif ncarrile==3 && flujoex>=44001 && flujoex<=48000
-    flujoy7= (1.401*SATL3) - 0.3632
+    flujoy7= (1.401*SATL3) - 0.3632;
 elseif ncarrile==3 && flujoex>=48001 && flujoex<=56000  
     flujoy7=0.259433962;
 elseif ncarrile==3 && flujoex>=56001 && flujoex<=60000
-    flujoy7 = (1.4859*SATL3) - 0.511
+    flujoy7 = (1.4859*SATL3) - 0.511;
 elseif ncarrile==3 && flujoex>=60001 && flujoex<=68000  
     flujoy7=0.314465409;
 elseif ncarrile==3 && flujoex>=68001 && flujoex<=72000
-    flujoy7= (1.4434*SATL3) - 0.5944
+    flujoy7= (1.4434*SATL3) - 0.5944;
 elseif ncarrile==3 && flujoex>=72001 && flujoex<=80000  
     flujoy7=0.367924528;
 elseif ncarrile==3 && flujoex>=80001 && flujoex<=84000
-    flujoy7 = (1.4434*SATL3) - 0.7013
+    flujoy7 = (1.4434*SATL3) - 0.7013;
 elseif ncarrile==3 && flujoex>=84001 && flujoex<=92000  
     flujoy7=0.421383648;
 elseif ncarrile==3 && flujoex>=92001 && flujoex<=96000
-    flujoy7= (1.401*SATL3) - 0.772
+    flujoy7= (1.401*SATL3) - 0.772;
 elseif ncarrile==3 && flujoex>=96001 && flujoex<=104000  
     flujoy7=0.47327044;
 elseif ncarrile==3 && flujoex>=104001 && flujoex<=108000
-    flujoy7= (1.5708*SATL3) - 1.0393
+    flujoy7= (1.5708*SATL3) - 1.0393;
 elseif ncarrile==3 && flujoex>=108001  
     flujoy7=0.531446541;
 end
@@ -613,39 +613,39 @@ SATL4=(flujoex/TPDAMAXL4);
 if ncarrile==4 && flujoex>=1 && flujoex<=12000
     flujoy7=0.045597484;
 elseif ncarrile==4 && flujoex>=12001 && flujoex<=16000
-    flujoy7 = (1.9245*SATL4) - 0.1148
+    flujoy7 = (1.9245*SATL4) - 0.1148;
 elseif ncarrile==4 && flujoex>=16001 && flujoex<=28000  
     flujoy7=0.099056604;
 elseif ncarrile==4 && flujoex>=28001 && flujoex<=32000
-    flujoy7= (1.9811*SATL4) - 0.2862
+    flujoy7= (1.9811*SATL4) - 0.2862;
 elseif ncarrile==4 && flujoex>=32001 && flujoex<=44000  
     flujoy7=0.15408805;
 elseif ncarrile==4 && flujoex>=44001 && flujoex<=48000
-    flujoy7 = (1.9245*SATL4) - 0.434
+    flujoy7 = (1.9245*SATL4) - 0.434;
 elseif ncarrile==4 && flujoex>=48001 && flujoex<=60000  
     flujoy7=0.20754717;
 elseif ncarrile==4 && flujoex>=60001 && flujoex<=64000
-    flujoy7= (1.9245*SATL4) - 0.5944
+    flujoy7= (1.9245*SATL4) - 0.5944;
 elseif ncarrile==4 && flujoex>=64001 && flujoex<=76000  
     flujoy7=0.261006289;
 elseif ncarrile==4 && flujoex>=76001 && flujoex<=80000
-    flujoy7= (1.9245*SATL4) - 0.7547
+    flujoy7= (1.9245*SATL4) - 0.7547;
 elseif ncarrile==4 && flujoex>=80001 && flujoex<=92000  
     flujoy7=0.314465409;
 elseif ncarrile==4 && flujoex>=92001 && flujoex<=96000
-    flujoy7= (1.9245*SATL4) - 0.9151
+    flujoy7= (1.9245*SATL4) - 0.9151;
 elseif ncarrile==4 && flujoex>=96001 && flujoex<=108000  
     flujoy7=0.367924528;
 elseif ncarrile==4 && flujoex>=108001 && flujoex<=112000
-    flujoy7= (2.0377*SATL4) - 1.1604
+    flujoy7= (2.0377*SATL4) - 1.1604;
 elseif ncarrile==4 && flujoex>=112001 && flujoex<=124000  
     flujoy7=0.424528302;
 elseif ncarrile==4 && flujoex>=124001 && flujoex<=128000
-    flujoy7 = (1.9245*SATL4) - 1.2327
+    flujoy7 = (1.9245*SATL4) - 1.2327;
 elseif ncarrile==4 && flujoex>=128001 && flujoex<=140000  
     flujoy7=0.477987421;
 elseif ncarrile==4 && flujoex>=140001 && flujoex<=144000
-    flujoy7 = (1.9245*SATL4) - 1.3931
+    flujoy7 = (1.9245*SATL4) - 1.3931;
 elseif ncarrile==4 && flujoex>=144001  
     flujoy7=0.531446541;
 end
@@ -655,23 +655,23 @@ SATL5=(flujoex/TPDAMAXL5);
 if ncarrile==5 && flujoex>=1 && flujoex<=4000
     flujoy7=0.045597484;
 elseif ncarrile==5 && flujoex>=4001 && flujoex<=12000
-    flujoy7 = (0.7594*SATL5) - 0.0105
+    flujoy7 = (0.7594*SATL5) - 0.0105;
 elseif ncarrile==5 && flujoex>=12001 && flujoex<=16000  
     flujoy7=0.15408805;
 elseif ncarrile==5 && flujoex>=16001 && flujoex<=24000
-    flujoy7= (0.7484*SATL5) - 0.0603
+    flujoy7= (0.7484*SATL5) - 0.0603;
 elseif ncarrile==5 && flujoex>=24001 && flujoex<=28000  
     flujoy7=0.261006289;
 elseif ncarrile==5 && flujoex>=28001 && flujoex<=36000
-    flujoy7= (0.7705*SATL5) - 0.1248
+    flujoy7= (0.7705*SATL5) - 0.1248;
 elseif ncarrile==5 && flujoex>=36001 && flujoex<=40000  
     flujoy7=0.371069182;
 elseif ncarrile==5 && flujoex>=40001 && flujoex<=48000
-    flujoy7= (0.7264*SATL5) - 0.1468
+    flujoy7= (0.7264*SATL5) - 0.1468;
 elseif ncarrile==5 && flujoex>=48001 && flujoex<=52000  
     flujoy7=0.474842767;
 elseif ncarrile==5 && flujoex>=52001 && flujoex<=56000
-    flujoy7= (0.7925*SATL5) - 0.261
+    flujoy7= (0.7925*SATL5) - 0.261;
 elseif ncarrile==5 && flujoex>=56001   
     flujoy7=0.531446541;
 end
@@ -685,35 +685,35 @@ elseif ncarrile==6 && flujoex>=8001 && flujoex<=12000
 elseif ncarrile==6 && flujoex>=12001 && flujoex<=16000  
     flujoy7=0.099056604;
 elseif ncarrile==6 && flujoex>=16001 && flujoex<=20000
-    flujoy7= (1.2657*SATL6) - 0.1211
+    flujoy7= (1.2657*SATL6) - 0.1211;
 elseif ncarrile==6 && flujoex>=20001 && flujoex<=28000  
     flujoy7=0.15408805;
 elseif ncarrile==6 && flujoex>=28001 && flujoex<=32000
-    flujoy7= (1.2296*SATL6) - 0.2201
+    flujoy7= (1.2296*SATL6) - 0.2201;
 elseif ncarrile==6 && flujoex>=32001 && flujoex<=36000  
     flujoy7=0.20754717;
 elseif ncarrile==6 && flujoex>=36001 && flujoex<=40000
-    flujoy7 = (1.1934*SATL6) - 0.2594
+    flujoy7 = (1.1934*SATL6) - 0.2594;
 elseif ncarrile==6 && flujoex>=40001 && flujoex<=48000  
     flujoy7=0.259433962;
 elseif ncarrile==6 && flujoex>=48001 && flujoex<=52000
-    flujoy7= (1.2657*SATL6) - 0.401
+    flujoy7= (1.2657*SATL6) - 0.401;
 elseif ncarrile==6 && flujoex>=52001 && flujoex<=56000
     flujoy7=0.314465409;
 elseif ncarrile==6 && flujoex>=56001 && flujoex<=60000
-    flujoy7= (1.2657*SATL6) - 0.456
+    flujoy7= (1.2657*SATL6) - 0.456;
 elseif ncarrile==6 && flujoex>=60001 && flujoex<=68000
     flujoy7=0.369496855;
 elseif ncarrile==6 && flujoex>=68001 && flujoex<=72000
-    flujoy7= (1.2657*SATL6) - 0.5661
+    flujoy7= (1.2657*SATL6) - 0.5661;
 elseif ncarrile==6 && flujoex>=72001 && flujoex<=76000
     flujoy7=0.424528302;
 elseif ncarrile==6 && flujoex>=76001 && flujoex<=80000
-    flujoy7= (1.1572*SATL6) - 0.5315
+    flujoy7= (1.1572*SATL6) - 0.5315;
 elseif ncarrile==6 && flujoex>=80001 && flujoex<=88000
     flujoy7=0.474842767;
 elseif ncarrile==6 && flujoex>=88001 && flujoex<=92000
-    flujoy7= (1.3019*SATL6) - 0.7705
+    flujoy7= (1.3019*SATL6) - 0.7705;
 elseif ncarrile==6 && flujoex>=92001 
     flujoy7=0.531446541;
 end
@@ -3166,19 +3166,19 @@ elseif acecopilot==7
 end
 %Probabilidad
 R=acecopiloto1*curvatura3*calidadcurva2*distvisual*anchocarril*delineacion*pendiente*estadosuperficie2*gestvelo*estveh*bandasonoraes*resdeslizamiento2*alumbrado2;
-if aceconducto==1
+if acecopilot==1
      acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==2
+elseif acecopilot==2
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==3
+elseif acecopilot==3
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==4
+elseif acecopilot==4
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==5
+elseif acecopilot==5
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==6
+elseif acecopilot==6
         acecopiloto2=acecopiloto(1,2);
-elseif aceconducto==7
+elseif acecopilot==7
         acecopiloto2=acecopiloto(1,2);
 end
 %Cruce peatonal (vía inpseccionada)
