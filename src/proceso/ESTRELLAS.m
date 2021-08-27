@@ -457,9 +457,9 @@ TPDAMAXP2=72001;
 SATP2=(flujoex/TPDAMAXP2);
 if ncarrile==2 && flujoex<56001
     flujoy3=0;
-elseif ncarrile==2 && flujoex>=56001 && flujoex<72001
+elseif ncarrile==2 && flujoex>=56001 && flujoex<72001;
     flujoy3=0.00314465408805032;
-elseif ncarrile==2 && flujoex>=72001 && flujoex<80001  
+elseif ncarrile==2 && flujoex>=72001 && flujoex<80001; 
     flujoy3= (0.0425*SATP2) - 0.0346;
 elseif ncarrile==2 && flujoex>=80001
     flujoy3=0.00786163522012579
