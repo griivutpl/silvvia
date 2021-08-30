@@ -82,12 +82,12 @@ i18=(h18*100)/(1/1000*sum(x.Distancia));
 i19=(h19*100)/(1/1000*sum(x.Distancia));
 
 %Tercer subatributo
-f20=find(strcmpi(x.Volumen_de_la_interseccion,'≥ 15,000 vehículos'));
-f21=find(strcmpi(x.Volumen_de_la_interseccion,'10,000 a 15,000 vehículos'));
-f22=find(strcmpi(x.Volumen_de_la_interseccion,'5,000 a 10,000 vehículos'));
-f23=find(strcmpi(x.Volumen_de_la_interseccion,'1,000 a 5,000 vehículos'));
-f24=find(strcmpi(x.Volumen_de_la_interseccion,'100 a 1,000 vehículos'));
-f25=find(strcmpi(x.Volumen_de_la_interseccion,'1 a 100 vehículos'));
+f20=find(strcmpi(x.Volumen_de_la_interseccion,'≥ 15000 vehículos por día'));
+f21=find(strcmpi(x.Volumen_de_la_interseccion,'10000 a 15000 vehículos por día'));
+f22=find(strcmpi(x.Volumen_de_la_interseccion,'5000 a 10000 vehículos por día'));
+f23=find(strcmpi(x.Volumen_de_la_interseccion,'1000 a 5000 vehículos por día'));
+f24=find(strcmpi(x.Volumen_de_la_interseccion,'100 a 1000 vehículos por día'));
+f25=find(strcmpi(x.Volumen_de_la_interseccion,'1 a 100 vehículos por día'));
 f26=find(strcmpi(x.Volumen_de_la_interseccion,'Ninguno'));
 
 

@@ -54,7 +54,7 @@ f18=find(strcmpi(x.Tipo_de_mediana,'Raya separadora de sentidos de circulación 
 f19=find(strcmpi(x.Tipo_de_mediana,'Línea central'));
 f20=find(strcmpi(x.Tipo_de_mediana,'Barrera de seguridad - amigable para motociclistas'));
 f21=find(strcmpi(x.Tipo_de_mediana,'Un solo sentido'));
-f22=find(strcmpi(x.Tipo_de_mediana,'Raya separadora de sentidos de circulación doble (0,3 m a 1 m) y rayas diagonales a 45°'));
+f22=find(strcmpi(x.Tipo_de_mediana,'Raya separadora de sentidos de circulación doble (0.3 m a 1 m) y rayas diagonales a 45°'));
 f23=find(strcmpi(x.Tipo_de_mediana,'Barrera de seguridad - cable de acero'));
 
 g9=x.Distancia(f9);
@@ -148,9 +148,9 @@ i30=(h30*100)/(1/1000*sum(x.Distancia));
 i31=(h31*100)/(1/1000*sum(x.Distancia));
 
 %Sexto subatributo
-f32=find(strcmpi(x.Ancho_de_carril,'Ancho (≥ 2,4 m)'));
-f33=find(strcmpi(x.Ancho_de_carril,'Medio (≥ 1,0 m a 2,4 m)'));
-f34=find(strcmpi(x.Ancho_de_carril,'Estrecho (≥ 0 m a 1,0 m)'));
+f32=find(strcmpi(x.Ancho_de_carril,'Ancho (≥ 3.25 m)'));
+f33=find(strcmpi(x.Ancho_de_carril,'Medio (≥ 2.75 m a < 3.25 m)'));
+f34=find(strcmpi(x.Ancho_de_carril,'Estrecho (≥ 0 m a < 2.75 m)'));
 
 g32=x.Distancia(f32);
 g33=x.Distancia(f33);
@@ -203,8 +203,8 @@ i40=(h40*100)/(1/1000*sum(x.Distancia));
 i41=(h41*100)/(1/1000*sum(x.Distancia));
 
 %Noveno subatributo
-f42=find(strcmpi(x.Pendiente,'0 % a < 7,5 %'));
-f43=find(strcmpi(x.Pendiente,'7,5 % a 10 %'));
+f42=find(strcmpi(x.Pendiente,'0 % a < 7.5 %'));
+f43=find(strcmpi(x.Pendiente,'7.5 % a 10 %'));
 f44=find(strcmpi(x.Pendiente,'≥ 10 %'));
 
 g42=x.Distancia(f42);
