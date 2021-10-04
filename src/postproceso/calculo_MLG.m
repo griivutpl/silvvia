@@ -705,7 +705,7 @@ OVsalidacaminoconductor(10)=distconductor2;
 OVsalidacaminoconductor(11)=anchoespaldon2;
 OVsalidacaminoconductor(12)=velosalida;
 
-OVsalidacaminoconductor2=y.Factores1
+OVsalidacaminoconductor2=y.Factores1;
 
 for i=1:length(OVsalidacaminoconductor)
     p(i+1)=((OVsalidacaminoconductor(i)-OVsalidacaminoconductor2(i))*100)/((OVsalidacaminoconductor(i)));
