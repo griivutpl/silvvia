@@ -177,23 +177,23 @@ if distconducto==4 %≥ 10 m
 end
 %Severidad en la carretera: objeto del lado del conductor
 T10=[12 30 30;15 25 25;12 20 20;9 30 30;55 55 55;45 45 45;40 40 40;55 55 55;45 45 45;90 90 3000;60 60 60;60 60 60;60 60 60;30 30 30;60 60 60;60 60 60;35 35 35];
-disp('1 = Barrera de seguridad – metal')
-disp('2 = Barrera de seguridad – hormigón')
-disp('3 = Barrera de seguridad: amigable para motocicletas')
-disp('4 = Barrera de seguridad - cable de acero')
-disp('5 = Cara vertical agresiva en el talud en corte')
-disp('6 = Pendiente ascendente del talud en corte (15° a 75°)')
-disp('7 = Pendiente empinada del talud en corte (> 75°)')
-disp('8 = Cuneta profunda')
-disp('9 = Terraplén')
-disp('10 = Precipicio')
-disp('11 = Árbol (≥ 10 cm de diámetro)')
-disp('12 = Letrero / poste / barra rígidos (≥ 10 cm de diámetro)')
-disp('13 = Estructura / puente / edificio rígidos')
-disp('14 = Estructura /edificio colapsable')
-disp('15 = Extremo de barrera desprotegido')
-disp('16 = Grandes rocas (≥ 20 cm de altura)')
-disp('17 = Ninguno (u objeto > 20 m de la carretera)')
+disp('1 = Barrera de seguridad – metal');
+disp('2 = Barrera de seguridad – hormigón');
+disp('3 = Barrera de seguridad: amigable para motocicletas');
+disp('4 = Barrera de seguridad - cable de acero');
+disp('5 = Cara vertical agresiva en el talud en corte');
+disp('6 = Pendiente ascendente del talud en corte (15° a 75°)');
+disp('7 = Pendiente empinada del talud en corte (> 75°)');
+disp('8 = Cuneta profunda');
+disp('9 = Terraplén');
+disp('10 = Precipicio');
+disp('11 = Árbol (≥ 10 cm de diámetro)');
+disp('12 = Letrero / poste / barra rígidos (≥ 10 cm de diámetro)');
+disp('13 = Estructura / puente / edificio rígidos');
+disp('14 = Estructura /edificio colapsable');
+disp('15 = Extremo de barrera desprotegido');
+disp('16 = Grandes rocas (≥ 20 cm de altura)');
+disp('17 = Ninguno (u objeto > 20 m de la carretera)');
 objconducto=x(2);
 if objconducto==1
     for i=1:3
@@ -327,7 +327,7 @@ SATMIN2=0.0000178568;
 if ncarrile==2 && SAT2<=SATMIN2
     flujoy1=0.471698113207547;
 elseif ncarrile==2 && SAT2>SATMIN2 && SAT2<1
-    flujoy1=-0.0908*(SAT2^3) +0.2279*(SAT2^2) -0.3436*(SAT2)+0.4701
+    flujoy1=-0.0908*(SAT2^3) +0.2279*(SAT2^2) -0.3436*(SAT2)+0.4701;
 elseif ncarrile==2 && SAT2>=1
     flujoy1=0.262054507337526;
 end
@@ -338,7 +338,7 @@ SATMIN3=0.0000138887;
 if ncarrile==3 && SAT3<=SATMIN3
     flujoy1=0.471698113207547;
 elseif ncarrile==3 && SAT3>SATMIN3 && SAT3<1
-    flujoy1=-1.6982*(SAT3^5) +4.2456*(SAT3^4) -4.0098*(SAT3^3) +1.9263*(SAT3^2) -0.6735*(SAT3) +0.4711
+    flujoy1=-1.6982*(SAT3^5) +4.2456*(SAT3^4) -4.0098*(SAT3^3) +1.9263*(SAT3^2) -0.6735*(SAT3) +0.4711;
 elseif ncarrile==3 && SAT3>=1
     flujoy1=0.262054507337526;
 end
@@ -349,7 +349,7 @@ SATMIN4=0.0000124998;
 if ncarrile==4 && SAT4<=SATMIN4
     flujoy1=0.429769392033543;
 elseif ncarrile==4 && SAT4>SATMIN4 && SAT4<1
-    flujoy1=0.4095*(SAT4^4) -1.0252*(SAT4^3)+ 0.9482*(SAT4^2) -0.5026*(SAT4) +0.431
+    flujoy1=0.4095*(SAT4^4) -1.0252*(SAT4^3)+ 0.9482*(SAT4^2) -0.5026*(SAT4) +0.431;
 elseif ncarrile==4 && SAT4>=1
     flujoy1=0.262054507337526;
 end
@@ -360,7 +360,7 @@ SATMIN5=0.0000208329;
 if ncarrile==5 && SAT5<=SATMIN5
     flujoy1=0.4979035639413;
 elseif ncarrile==5 && SAT5>SATMIN5 && SAT5<1
-    flujoy1=-0.0858*(SAT5^3)+0.1876*(SAT5^2) -0.3366*(SAT5) +0.5016
+    flujoy1=-0.0858*(SAT5^3)+0.1876*(SAT5^2) -0.3366*(SAT5) +0.5016;
 elseif ncarrile==5 && SAT5>=1
     flujoy1=0.262054507337526;
 end
@@ -371,7 +371,7 @@ SATMIN6=0.0000166664;
 if ncarrile==6 && SAT6<=SATMIN6
     flujoy1=0.471698113207547;
 elseif ncarrile==6 && SAT6>SATMIN6 && SAT6<1
-    flujoy1=-0.2516*(SAT6^3) +0.4897*(SAT6^2) -0.4475*(SAT6)+0.4745
+    flujoy1=-0.2516*(SAT6^3) +0.4897*(SAT6^2) -0.4475*(SAT6)+0.4745;
 elseif ncarrile==6 && SAT6>=1
     flujoy1=0.262054507337526;
 end
@@ -380,7 +380,7 @@ end
 if ncarrile==1 && SAT1<=SATMIN1
     flujoy2=0.050314465408805;
 elseif ncarrile==1 && SAT1>SATMIN1 && SAT1<1
-    flujoy2=(0.4817*SAT1) + 0.058
+    flujoy2=(0.4817*SAT1) + 0.058;
 elseif ncarrile==1 && SAT1>=1
     flujoy2=0.534591194968553;
 end
@@ -391,7 +391,7 @@ SATMINP2=0.0000138887;
 if ncarrile==2 && SATP2<=SATMINP2
     flujoy2=0.110062893081761;
 elseif ncarrile==2 && SATP2>SATMINP2 && SATP2<1
-    flujoy2=-0.4419*(SATP2^2) + (0.8657*SATP2) + 0.1105
+    flujoy2=-0.4419*(SATP2^2) + (0.8657*SATP2) + 0.1105;
 elseif ncarrile==2 && SATP2>=1
     flujoy2=0.534591194968553;
 end
@@ -402,7 +402,7 @@ SATMINP3=0.0000119046;
 if ncarrile==3 && SATP3<=SATMINP3
     flujoy2=0.154088050314465;
 elseif ncarrile==3 && SATP3>SATMINP3 && SATP3<1
-    flujoy2=-0.4027*(SATP3^2) + (0.7703*SATP3) + 0.1604
+    flujoy2=-0.4027*(SATP3^2) + (0.7703*SATP3) + 0.1604;
 elseif ncarrile==3 && SATP3>=1
     flujoy2=0.534591194968553;
 end
@@ -411,9 +411,9 @@ TPDAMAX4=80001;
 SAT4=(flujoex/TPDAMAX4);
 SATMIN4=0.0000124998;
 if ncarrile==4 && SAT4<=SATMIN4
-    flujoy2=0.188679245283019
+    flujoy2=0.188679245283019;
 elseif ncarrile==4 && SAT4>SATMIN4 && SAT4<1
-    flujoy2=-0.3152*(SAT4^2) + (0.6555*SAT4)+ 0.1916
+    flujoy2=-0.3152*(SAT4^2) + (0.6555*SAT4)+ 0.1916;
 elseif ncarrile==4 && SAT4>=1
     flujoy2=0.534591194968553;
 end
@@ -424,7 +424,7 @@ SATMINP5=0.0000185182;
 if ncarrile==5 && SATP5<=SATMINP5
     flujoy2=0.0707547169811321;
 elseif ncarrile==5 && SATP5>SATMINP5 && SATP5<1
-    flujoy2= -0.2026*(SATP5^2) + (0.6696*SATP5) + 0.069
+    flujoy2= -0.2026*(SATP5^2) + (0.6696*SATP5) + 0.069;
 elseif ncarrile==5 && SATP5>=1
     flujoy2=0.534591194968553;
 end
@@ -435,7 +435,7 @@ SATMINP6=0.0000124998;
 if ncarrile==6 && SATP6<=SATMINP6
     flujoy2=0.125786163522013;
 elseif ncarrile==6 && SATP6>SATMINP6 && SATP6<1
-    flujoy2=-0.4193*(SATP6^2)+(0.813*SATP6)+0.1323
+    flujoy2=-0.4193*(SATP6^2)+(0.813*SATP6)+0.1323;
 elseif ncarrile==6 && SATP6>=1
     flujoy2=0.531446540880503;
 end
@@ -448,7 +448,7 @@ SATMINA1=0.1;
 if ncarrile==1 && SAT1<=SATMINA1
     flujoy3=0.0138903;
 elseif ncarrile==1 && SAT1>SATMINA1 && SAT1<1
-    flujoy3=-0.2212*(SAT1^3)+0.5207*(SAT1^2)-0.119*(SAT1)+0.0212
+    flujoy3=-0.2212*(SAT1^3)+0.5207*(SAT1^2)-0.119*(SAT1)+0.0212;
 elseif ncarrile==1 && SAT1>=1
     flujoy3=0.2;
 end
@@ -457,9 +457,9 @@ TPDAMAXP2=72001;
 SATP2=(flujoex/TPDAMAXP2);
 if ncarrile==2 && flujoex<56001
     flujoy3=0;
-elseif ncarrile==2 && flujoex>=56001 && flujoex<72001;
+elseif ncarrile==2 && flujoex>=56001 && flujoex<72001
     flujoy3=0.00314465408805032;
-elseif ncarrile==2 && flujoex>=72001 && flujoex<80001; 
+elseif ncarrile==2 && flujoex>=72001 && flujoex<80001
     flujoy3= (0.0425*SATP2) - 0.0346;
 elseif ncarrile==2 && flujoex>=80001
     flujoy3=0.00786163522012579
@@ -681,7 +681,7 @@ SATL6=(flujoex/TPDAMAXL6);
 if ncarrile==6 && flujoex>=1 && flujoex<=8000
     flujoy7=0.045597484;
 elseif ncarrile==6 && flujoex>=8001 && flujoex<=12000
-    flujoy7 = (1.2296*SATL6) - 0.0613
+    flujoy7 = (1.2296*SATL6) - 0.0613;
 elseif ncarrile==6 && flujoex>=12001 && flujoex<=16000  
     flujoy7=0.099056604;
 elseif ncarrile==6 && flujoex>=16001 && flujoex<=20000
@@ -727,7 +727,7 @@ if ncarrile==1 && SATC1<=0.1
 elseif ncarrile==1 && SATC1>=1
     flujoy5=0.1;
 elseif ncarrile==1 && SATC1>0.1 && SATC1<1
-    flujoy5=0.0475*(SATC1^3)-0.1193*(SATC1^2)+(0.1723*SATC1)-0.0005
+    flujoy5=0.0475*(SATC1^3)-0.1193*(SATC1^2)+(0.1723*SATC1)-0.0005;
 end
 %Dos
 TPDAMAXC2=72001;
@@ -737,7 +737,7 @@ if ncarrile==2 && SATC2<=0.1
 elseif ncarrile==2 && SATC2>=1
     flujoy5=0.1;
 elseif ncarrile==2 && SATC2>0.1 && SATC2<1
-    flujoy5=0.0475*(SATC2^3)-0.1193*(SATC2^2)+(0.1723*SATC2)-0.0005
+    flujoy5=0.0475*(SATC2^3)-0.1193*(SATC2^2)+(0.1723*SATC2)-0.0005;
 end
 %Tres
 TPDAMAXC3=108001;
@@ -747,7 +747,7 @@ if ncarrile==3 && SATC3<=0.1
 elseif ncarrile==3 && SATC3>=1
     flujoy5=0.1;
 elseif ncarrile==3 && SATC3>0.1 && SATC3<1
-    flujoy5=0.0475*(SATC3^3)-0.1193*(SATC3^2)+(0.1723*SATC3)-0.0005
+    flujoy5=0.0475*(SATC3^3)-0.1193*(SATC3^2)+(0.1723*SATC3)-0.0005;
 end
 %Cuatro
 TPDAMAXC4=144001;
@@ -757,7 +757,7 @@ if ncarrile==4 && SATC4<=0.1
 elseif ncarrile==4 && SATC4>=1
     flujoy5=0.1;
 elseif ncarrile==4 && SATC4>0.1 && SATC4<1
-    flujoy5=0.0475*(SATC4^3)-0.1193*(SATC4^2)+(0.1723*SATC4)-0.0005
+    flujoy5=0.0475*(SATC4^3)-0.1193*(SATC4^2)+(0.1723*SATC4)-0.0005;
 end
 %Dos + uno
 TPDAMAXC5=54001;
@@ -767,7 +767,7 @@ if ncarrile==5 && SATC5<=0.1
 elseif ncarrile==5 && SATC5>=1
     flujoy5=0.1;
 elseif ncarrile==5 && SATC5>0.1 && SATC5<1
-    flujoy5=0.0475*(SATC5^3)-0.1193*(SATC5^2)+(0.1723*SATC5)-0.0005
+    flujoy5=0.0475*(SATC5^3)-0.1193*(SATC5^2)+(0.1723*SATC5)-0.0005;
 end
 %Tres + dos
 TPDAMAXC6=90001;
@@ -777,7 +777,7 @@ if ncarrile==6 && SATC6<=0.1
 elseif ncarrile==6 && SATC6>=1
     flujoy5=0.1;
 elseif ncarrile==6 && SATC6>0.1 && SATC6<1
-    flujoy5=0.0475*(SATC6^3)-0.1193*(SATC6^2)+(0.1723*SATC6)-0.0005
+    flujoy5=0.0475*(SATC6^3)-0.1193*(SATC6^2)+(0.1723*SATC6)-0.0005;
 end
 %2.INTERSECCIONES
 if volinte==7 
@@ -803,7 +803,7 @@ SATP1=(flujoex/TPDAMAXP1);
 if ncarrile==1 && SATP1<=0.1
     flujoy8=0.0155845;
 elseif ncarrile==1 && SATP1>0.1 && SATP1<1
-    flujoy8=0.0475*(SATP1^3)-0.1193*(SATP1^2)+(0.1723*SATP1)-0.0005
+    flujoy8=0.0475*(SATP1^3)-0.1193*(SATP1^2)+(0.1723*SATP1)-0.0005;
 elseif ncarrile==1 && SATP1>=1
     flujoy8=0.1;
 end
@@ -815,7 +815,7 @@ if ncarrile==2 && SATP2<=0.1
 elseif ncarrile==2 && SATP2>=1
     flujoy8=0.1;
 elseif ncarrile==2 && SATP2>0.1 && SATP2<1
-    flujoy8=0.0475*(SATP2^3)-0.1193*(SATP2^2)+(0.1723*SATP2)-0.0005
+    flujoy8=0.0475*(SATP2^3)-0.1193*(SATP2^2)+(0.1723*SATP2)-0.0005;
 end
 %Tres
 TPDAMAXP3=96001;
@@ -825,7 +825,7 @@ if ncarrile==3 && SATP3<=0.1
 elseif ncarrile==3 && SATP3>=1
     flujoy8=0.1;
 elseif ncarrile==3 && SATP3>0.1 && SATP3<1
-    flujoy8=0.0475*(SATP3^3)-0.1193*(SATP3^2)+(0.1723*SATP3)-0.0005
+    flujoy8=0.0475*(SATP3^3)-0.1193*(SATP3^2)+(0.1723*SATP3)-0.0005;
 end
 %Cuatro
 TPDAMAXP4=64001;
@@ -835,7 +835,7 @@ if ncarrile==4 && SATP4<=0.0000156248
 elseif ncarrile==4 && SATP4>=1
     flujoy8=0.0639361111111111;
 elseif ncarrile==4 && SATP4>0.0000156248 && SATP4<1
-    flujoy8=-0.0663*(SATP4^3) + 0.0747*(SATP4^2) + 0.0394*(SATP4) + 0.0165
+    flujoy8=-0.0663*(SATP4^3) + 0.0747*(SATP4^2) + 0.0394*(SATP4) + 0.0165;
 end
 %Dos + uno
 TPDAMAXP5=54001;
@@ -845,7 +845,7 @@ if ncarrile==5 && SATP5<=0.1
 elseif ncarrile==5 && SATP5>=1
     flujoy8=0.1;
 elseif ncarrile==5 && SATP5>0.1 && SATP5<1
-    flujoy8=0.0475*(SATP5^3)-0.1193*(SATP5^2)+(0.1723*SATP5)-0.0005
+    flujoy8=0.0475*(SATP5^3)-0.1193*(SATP5^2)+(0.1723*SATP5)-0.0005;
 end
 %Tres + dos
 TPDAMAXP6=90001;
@@ -855,7 +855,7 @@ if ncarrile==6 && SATP6<=0.0000142855
 elseif ncarrile==6 && SATP6>=1
     flujoy8=0.0829217171717172;
 elseif ncarrile==6 && SATP6>0.0000142855 && SATP6<1
-    flujoy8= -0.0118*(SATP6^3)-0.0286*(SATP6^2)+0.1083*(SATP6)+0.0158
+    flujoy8= -0.0118*(SATP6^3)-0.0286*(SATP6^2)+0.1083*(SATP6)+0.0158;
 end
 %2. CRUCE LATERAL
 if volinte==7 
@@ -874,8 +874,8 @@ elseif volinte==1
     flujoy9=0.0709373363262252;
 end
 %Transitabilidad media
-disp('1 = Transitable')
-disp('2 = No saturada')
+disp('1 = Transitable');
+disp('2 = No saturada');
 transitabilidad=x(53);
 if transitabilidad==1
    transitabilida=1;
@@ -1410,8 +1410,8 @@ x3=distcopiloto2*objcopiloto2*anchoespaldoncop2;
 B=anchocarril*curvatura2*calidadcurva2*delineacion*bandasonoraes*estadosuperficie2*pendiente*resdeslizamiento2*distcopiloto2*objcopiloto2*anchoespaldoncop2*flujoy1*velosalida;
 %%Choque frontal (pérdida de control)%
 %Bandas sonoras centrales
-disp('1= Ausente')
-disp('2 = Presente')
+disp('1= Ausente');
+disp('2 = Presente');
 bandassonora=x(11);
 if bandassonora==1
     bandassonoras=1.20;
@@ -1420,21 +1420,21 @@ else bandassonora==2
 end
 %Tipo de mediana
 T13=[0 0 1 0.7;0 0 1 0.7;2 0 1 0.7;10 0 1 0.7;35 0 1 0.7;80 0 1 0.7;90 0 1.6 0.7;77 25 3 1;90 0 2.7 1;83 82.5 2.4 1;100 100 3 1;0 0 1 0.7;0 0 1 0.7;95 100 2.7 1;0 0 1 0.7];
-disp('1 = Barrera de seguridad – metal')
-disp('2 = Barrera de seguridad – hormigón')
-disp('3 = Mediana física con un ancho ≥ 20 m')
-disp('4 = Mediana física con un ancho ≥ 10m a < 20 m')
-disp('5 = Mediana física con un ancho ≥ 5 m a < 10 m')
-disp('6 = Mediana física con un ancho ≥ 1 m a < 5 m')
-disp('7 = Mediana física con un ancho ≥ 0 m a < 1 m')
-disp('8 = Carril central continuo para giro')
-disp('9 = Delineadores flexibles')
-disp('10 = Raya separadora de sentidos de circulación doble > 1 m y rayas diagonales a 45°')
-disp('11 = Línea central')
-disp('12 = Barrera de seguridad - amigable para motociclistas')
-disp('13 = Un solo sentido')
-disp('14 = Raya separadora de sentidos de circulación doble (0.3m a 1m) y rayas diagonales a 45°')
-disp('15 = Barrera de seguridad - cable de acero')
+disp('1 = Barrera de seguridad – metal');
+disp('2 = Barrera de seguridad – hormigón');
+disp('3 = Mediana física con un ancho ≥ 20 m');
+disp('4 = Mediana física con un ancho ≥ 10m a < 20 m');
+disp('5 = Mediana física con un ancho ≥ 5 m a < 10 m');
+disp('6 = Mediana física con un ancho ≥ 1 m a < 5 m');
+disp('7 = Mediana física con un ancho ≥ 0 m a < 1 m');
+disp('8 = Carril central continuo para giro');
+disp('9 = Delineadores flexibles');
+disp('10 = Raya separadora de sentidos de circulación doble > 1 m y rayas diagonales a 45°');
+disp('11 = Línea central');
+disp('12 = Barrera de seguridad - amigable para motociclistas');
+disp('13 = Un solo sentido');
+disp('14 = Raya separadora de sentidos de circulación doble (0.3m a 1m) y rayas diagonales a 45°');
+disp('15 = Barrera de seguridad - cable de acero');
 tipomedian=x(10);
 if tipomedian==1
     for i=1:4
@@ -1511,25 +1511,7 @@ if tipomedian==15
  tipomediana(1,i)=T13(15,i);
     end
 end
-%Influencia del flujo externo
-%if flujoex<8001
-%    flujoext1=0.1622;
-%elseif flujoex>=8001&flujoex<16001
-%        flujoext1=0.3244259331;
-%elseif flujoex>=16001&flujoex<24001
-%       flujoext1=0.434158234;
-%elseif flujoex>=24001&flujoex<32001
-%        flujoext1=0.5422206955;
-%elseif flujoex>=32001&flujoex<40001
-%        flujoext1=0.651237351;
-%elseif flujoex>=40001&flujoex<48001
-%        flujoext1=0.7585841671;
-%elseif flujoex>=48001&flujoex<56001
-%        flujoext1=0.8134503175;       
-%else flujoex>=56001
-%        flujoext1=0.868316468; 
-%end
-%Velocidad de operacion (aqui toma el -10km/h)
+%Velocidad de operacion
 if veloperaciom==150
         veloperacion1=1;
 elseif veloperaciom==145
@@ -1718,22 +1700,22 @@ D=pendiente*resdeslizamiento2*velodiferencial*ncarriles2*tipomediana3*flujoy3*ve
 %%Interseccion 
 %Tipo de interseccion
 T15=[6 15 1.05 40 6 20;15 15 1.5 150 30 30;13 45 1.1 45 17 45;16 45 1.1 55 20 45;9 45 1.1 30 9 45;12 45 1.1 40 14 45;16 50 1.2 55 16 50;23 50 1.2 80 26 50;10 50 1.2 35 10 50;15 50 1.2 50 16 50;0 0 1 0 0 0;1 150 1 3 1 150;0.5 150 1 1 0.5 150;0.5 45 1.1 2 0.5 45;0.3 45 1.1 1 0.3 45;16 35 1.3 55 16 35];
-disp('1 = Carril de incorporacion')
-disp('2 = Rotonda')
-disp('3 = 3 ramas (no semaforizada) con giro continuo')
-disp('4 = 3 ramas (no semaforizada) sin giro continuo')
-disp('5 = 3 ramas (semaforizada) con giro continuo')
-disp('6 = 3 ramas (semaforizada) sin giro continuo')
-disp('7 = 4 ramas (no semaforizada) con giro continuo')
-disp('8 = 4 ramas (no semaforizada) sin giro continuo')
-disp('9 = 4 ramas (semaforizada) con giro continuo')
-disp('10 = 4 ramas (semaforizada) sin giro continuo')
-disp('11 = Ninguno')
-disp('12 = Cruce de ferrocarril - pasivo (solo señalizacion vertical)')
-disp('13 = Cruce de ferrocarril - activo (semaforo intermitente/pluma)')
-disp('14 = Punto de cruce de faja separadora central - informal')
-disp('15 = Punto de cruce de faja separadora central - formal')
-disp('16 = Minirotonda')
+disp('1 = Carril de incorporacion');
+disp('2 = Rotonda');
+disp('3 = 3 ramas (no semaforizada) con giro continuo');
+disp('4 = 3 ramas (no semaforizada) sin giro continuo');
+disp('5 = 3 ramas (semaforizada) con giro continuo');
+disp('6 = 3 ramas (semaforizada) sin giro continuo');
+disp('7 = 4 ramas (no semaforizada) con giro continuo');
+disp('8 = 4 ramas (no semaforizada) sin giro continuo');
+disp('9 = 4 ramas (semaforizada) con giro continuo');
+disp('10 = 4 ramas (semaforizada) sin giro continuo');
+disp('11 = Ninguno');
+disp('12 = Cruce de ferrocarril - pasivo (solo señalizacion vertical)');
+disp('13 = Cruce de ferrocarril - activo (semaforo intermitente/pluma)');
+disp('14 = Punto de cruce de faja separadora central - informal');
+disp('15 = Punto de cruce de faja separadora central - formal');
+disp('16 = Minirotonda');
 tipointe=x(25);
 if tipointe==1
     for i=1:6
@@ -1747,7 +1729,7 @@ if tipointe==2
 end
 if tipointe==3
     for i=1:6
-    tipointer(1,i)=T15(3,i)
+    tipointer(1,i)=T15(3,i);
     end
 end
 if tipointe==4
@@ -1817,9 +1799,9 @@ if tipointe==16
 end
 %Calidad de la interseccion 
 %T16=[1 1 1 1;1.2 1.2 1.2 1.2;1 1 1 1]
-disp('1 = Adecuado')
-disp('2 = Deficiente')
-disp('3 = No aplica')
+disp('1 = Adecuado');
+disp('2 = Deficiente');
+disp('3 = No aplica');
 calinte=x(28);
 if calinte==1
     calinter=1;
@@ -1830,8 +1812,8 @@ elseif calinte==3
 end
 %Alumbrado publico
 T17=[1.15 1.25 1.25;1 1 1];
-disp('1 = Ausente')
-disp('2 = Presente')
+disp('1 = Ausente');
+disp('2 = Presente');
 alumbrad=x(20);
 if alumbrad==1
     for i=1:3
@@ -1864,8 +1846,8 @@ elseif caninte==2
 end
 %Gestión de la velocidad / Calmante del tráfico
 T19=[1.25 1.25 1.25;1 1 1];
-disp('1 = Ausente')
-disp('2 = Presente')
+disp('1 = Ausente');
+disp('2 = Presente');
 gestvel=x(51);
 if gestvel==1
     gestvelo=1.25;
@@ -1902,8 +1884,8 @@ elseif tipointe==14
     tipointer2=tipointer(1,1);
 elseif tipointe==15
     tipointer2=tipointer(1,1);
-elseif tipointe==13
-    tipointer2=tipointer(1,1)
+elseif tipointe==16
+    tipointer2=tipointer(1,1);
 end
 if alumbrad==1
     alumbrado1=alumbrado(1,1);
@@ -2085,8 +2067,8 @@ elseif tipomedian==15
  tipomediana4=tipomediana(1,4);
 end
 %Via de servicio
-disp('1 = Ausente')
-disp('2 = Presente')
+disp('1 = Ausente');
+disp('2 = Presente');
 vacces=x(22);
 if vacces==1
     vacceso=1.5;
@@ -2095,9 +2077,9 @@ else vacces==2
 end
 %Puntos de acceso
 T19=[2 50;1.3 50;1.1 50;1 0];
-disp('1 = Acceso comercial 1+')
-disp('2 = Acceso residencial >=3')
-disp('3 = Acceso residencial <3')
+disp('1 = Acceso comercial 1+');
+disp('2 = Acceso residencial >=3');
+disp('3 = Acceso residencial <3');
 disp('4 = Ninguno')
 puntacces=x(29);
 if puntacces==1
@@ -2146,7 +2128,7 @@ x7=tipomediana4*vacceso*puntacceso1;
 %Clasificacion por estrellas para acceso a propiedades
 F=tipomediana4*vacceso*puntacceso1*puntacceso2*flujopre*veloperacion;
 %Tipo de carretera
-tipocarretera=x(8)
+tipocarretera=x(8);
 if tipocarretera==1 %Calzada A de una calzada dividida
     tipocarreter=1.034080299;
     tipocarreterm=1.027787077;
@@ -2432,68 +2414,68 @@ ZX=vacceso*puntacceso1*puntacceso2*flujopre*veloperacion;
 %%A lo largo
 %Infraestructura para motocicletas
 T20=[0 50;0.1 50;0 50;0.1 50;1 50;2 50];
-disp('1 = Motovía exclusiva de un sentido con barrera')
-disp('2 = Motovía exclusiva de un sentido sin barrera')
-disp('3 = Motovía exclusiva de dos sentidos con barrera')
-disp('4 = Motovía exclusiva de dos sentidos sin barrera')
-disp('5 = Motovía compartida en la carretera')
-disp('6 = Ninguno')
+disp('1 = Motovía exclusiva de un sentido con barrera');
+disp('2 = Motovía exclusiva de un sentido sin barrera');
+disp('3 = Motovía exclusiva de dos sentidos con barrera');
+disp('4 = Motovía exclusiva de dos sentidos sin barrera');
+disp('5 = Motovía compartida en la carretera');
+disp('6 = Ninguno');
 infmot=x(45);
 if infmot==1
     for i=1:2
-    infmoto(1,i)=T20(1,i)
+    infmoto(1,i)=T20(1,i);
     end
 end
 if infmot==2
     for i=1:2
-    infmoto(1,i)=T20(2,i)
+    infmoto(1,i)=T20(2,i);
     end
 end
 if infmot==3
     for i=1:2
-    infmoto(1,i)=T20(3,i)
+    infmoto(1,i)=T20(3,i);
     end
 end
 if infmot==4
     for i=1:2
-    infmoto(1,i)=T20(4,i)
+    infmoto(1,i)=T20(4,i);
     end
 end
 if infmot==5
     for i=1:2
-    infmoto(1,i)=T20(5,i)
+    infmoto(1,i)=T20(5,i);
     end
 end
 if infmot==6
     for i=1:2
-    infmoto(1,i)=T20(6,i)
+    infmoto(1,i)=T20(6,i);
     end
 end
 if infmot==1
-    infmoto1=infmoto(1,1)
+    infmoto1=infmoto(1,1);
 elseif infmot==2
-        infmoto1=infmoto(1,1)
+        infmoto1=infmoto(1,1);
 elseif infmot==3
-        infmoto1=infmoto(1,1)
+        infmoto1=infmoto(1,1);
 elseif infmot==4
-        infmoto1=infmoto(1,1)
+        infmoto1=infmoto(1,1);
 elseif infmot==5
-        infmoto1=infmoto(1,1)
+        infmoto1=infmoto(1,1);
 elseif infmot==6
-        infmoto1=infmoto(1,1)
+        infmoto1=infmoto(1,1);
 end
 if infmot==1
-    infmoto2=infmoto(1,2)
+    infmoto2=infmoto(1,2);
 elseif infmot==2
-        infmoto2=infmoto(1,2)
+        infmoto2=infmoto(1,2);
 elseif infmot==3
-        infmoto2=infmoto(1,2)
+        infmoto2=infmoto(1,2);
 elseif infmot==4
-        infmoto2=infmoto(1,2)
+        infmoto2=infmoto(1,2);
 elseif infmot==5
-        infmoto2=infmoto(1,2)
+        infmoto2=infmoto(1,2);
 elseif infmot==6
-        infmoto2=infmoto(1,2)
+        infmoto2=infmoto(1,2);
 end
 %Influencia del flujo externo - Sin TDPA de motocicletas (M/C) por carril
 L=infmoto1*infmoto2*flujoy7*veloperacion;
@@ -2537,13 +2519,13 @@ x16=EstMoto;
 %%%Clasificación por Estrellas para ciclistas
 %Infraestructura para bicicletas 
 T21=[0 1 0;0.1 1 90;12 1 90;20 1.2 90;17 1.2 90;19 1 90;1 1 90];
-disp('1 = Ciclovía fuera de la carretera con barrera')
-disp('2 = Ciclovía fuera de la carretera sin barrera')
-disp('3 = Ciclovía en la carretera')
-disp('4 = Ninguno')
-disp('5 = Carril extra fuera de la calzada (≥4.2 m)')
-disp('6 = Vía compartida con señalización vertical')
-disp('7 = Ciclovía de uso compartido')
+disp('1 = Ciclovía fuera de la carretera con barrera');
+disp('2 = Ciclovía fuera de la carretera sin barrera');
+disp('3 = Ciclovía en la carretera');
+disp('4 = Ninguno');
+disp('5 = Carril extra fuera de la calzada (≥4.2 m)');
+disp('6 = Vía compartida con señalización vertical');
+disp('7 = Ciclovía de uso compartido');
 infbic=x(46);
 if infbic==1
     for i=1:3
@@ -2596,16 +2578,16 @@ elseif infbic==7
         infbici1=infbici(1,1);
 end
 %Estacionamiento de vehiculos
-disp('1 = Ninguno')
-disp('2 = Un lado')
-disp('3 = Dos lados')
+disp('1 = Ninguno');
+disp('2 = Un lado');
+disp('3 = Dos lados');
 estve=x(21);
 if estve==1
-    estveh=1
+    estveh=1;
 elseif estve==2
-    estveh=1.2
+    estveh=1.2;
 elseif estve==3
-    estveh=1.33
+    estveh=1.33;
 end
 if alumbrad==1
     alumbrado2=alumbrado(1,3);
@@ -2785,7 +2767,7 @@ end
 %Probabilidad
 x20=anchocarril*curvatura2*calidadcurva3*delineacion*alumbrado2*estadosuperficie5*pendiente*resdeslizamiento3;
 %Severidad
-W=((distconductor4*objconductor4)+(distcopiloto4*objcopiloto4))/2
+W=((distconductor4*objconductor4)+(distcopiloto4*objcopiloto4))/2;
 %Clasificacion por estrellas salida de la via
 N=anchocarril*curvatura2*calidadcurva3*delineacion*alumbrado2*estadosuperficie5*pendiente*resdeslizamiento3*W*veloperacionbi*flujoy5;
 %%Interseccion
@@ -2838,21 +2820,21 @@ elseif infbic==7
         infbici3=infbici(1,2);
 end
 %Infraestructura para cruce peatonal (inspeccionada)
-disp('1 = Supervisor de cruce en zona escolar presente en horario de entrada y salida de la escuela')
-disp('2 = Supervisor de cruce en zona escolar no presente')
-disp('3 = No aplica (no hay escuela en el lugar)')
-supescolar=x(48)
-disp('1 = Infraestructura a desnivel')
-disp('2 = Semaforizada con refugio')
-disp('3 = Semaforizada sin refugio')
-disp('4 = No semaforizada. señalizada con pintura y con refugio')
-disp('5 = No semaforizada. señalizada con pintura y sin refugio')
-disp('6 = Solo refugio')
-disp('7 =  Sin infraestructura')
-disp('8 = Cruce demarcado elevado. sin semáforo. con refugio')
-disp('9 = Cruce demarcado elevado. sin semáforo. sin refugio')
-disp('10 = Cruce no demarcado elevado. con refugio')
-disp('11 = Cruce no demarcado elevado. sin refugio')
+disp('1 = Supervisor de cruce en zona escolar presente en horario de entrada y salida de la escuela');
+disp('2 = Supervisor de cruce en zona escolar no presente');
+disp('3 = No aplica (no hay escuela en el lugar)');
+supescolar=x(48);
+disp('1 = Infraestructura a desnivel');
+disp('2 = Semaforizada con refugio');
+disp('3 = Semaforizada sin refugio');
+disp('4 = No semaforizada. señalizada con pintura y con refugio');
+disp('5 = No semaforizada. señalizada con pintura y sin refugio');
+disp('6 = Solo refugio');
+disp('7 =  Sin infraestructura');
+disp('8 = Cruce demarcado elevado. sin semáforo. con refugio');
+disp('9 = Cruce demarcado elevado. sin semáforo. sin refugio');
+disp('10 = Cruce no demarcado elevado. con refugio');
+disp('11 = Cruce no demarcado elevado. sin refugio');
 T40=[0.4 0.3 0.4;1 0.95 1;1.25 1.2 1.25;3.8 1 3.8;4.8 1.25 4.8;5.1 3.8 5.1;6.7 4.8 6.7;2.5 1 2.5;3.2 1 3.2;3.4 2.5 3.4;4.5 3.2 4.5];
 %Via Inspeccionada
 infcrucepe=x(39)
@@ -2955,15 +2937,15 @@ elseif porcicli==11
         EstCicl=(M+N+O);
 end
 if EstCicl>=60
-    EstCiclista=1
+    EstCiclista=1;
 elseif EstCicl>=30&& EstCicl<60
-    EstCiclista=2
+    EstCiclista=2;
 elseif EstCicl>=10&& EstCicl<30
     EstCiclista=3;
 elseif EstCicl>=5&& EstCicl<10
-    EstCiclista=4
+    EstCiclista=4;
 elseif EstCicl>0&& EstCicl<5
-    EstCiclista=5
+    EstCiclista=5;
 elseif EstCicl==0
     EstCiclista=0;
 end
@@ -2974,47 +2956,47 @@ x19=EstCicl;
 %Atributo vial (probabilidad)
 %Acera-lado de conductor
 T22=[0 90;0.075 90;0.09 90;0.1 90;20 90;5 90;6 90];
-disp('1 = Barrera fisica')
-disp('2 = Separación no física >= 3.0 m')
-disp('3 = Separación no física 1.0 m a 3.0 m')
-disp('4 = Separación no física 0 m < 1.0 m')
-disp('5 = Ninguno')
-disp('6 = Camino informal ? 1.0 m')
-disp('7 = Camino informal de 0 m a <1.0 m')
+disp('1 = Barrera fisica');
+disp('2 = Separación no física >= 3.0 m');
+disp('3 = Separación no física 1.0 m a 3.0 m');
+disp('4 = Separación no física 0 m < 1.0 m');
+disp('5 = Ninguno');
+disp('6 = Camino informal ? 1.0 m');
+disp('7 = Camino informal de 0 m a <1.0 m');
 aceconducto=x(43);
 if aceconducto==1
     for i=1:2
-    aceconductor(1,i)=T22(1,i)
+    aceconductor(1,i)=T22(1,i);
     end
 end
 if aceconducto==2
     for i=1:2
-    aceconductor(1,i)=T22(2,i)
+    aceconductor(1,i)=T22(2,i);
     end
 end
 if aceconducto==3
     for i=1:2
-    aceconductor(1,i)=T22(3,i)
+    aceconductor(1,i)=T22(3,i);
     end
 end
 if aceconducto==4
     for i=1:2
-    aceconductor(1,i)=T22(4,i)
+    aceconductor(1,i)=T22(4,i);
     end
 end
 if aceconducto==5
     for i=1:2
-    aceconductor(1,i)=T22(5,i)
+    aceconductor(1,i)=T22(5,i);
     end
 end
 if aceconducto==6
     for i=1:2
-    aceconductor(1,i)=T22(6,i)
+    aceconductor(1,i)=T22(6,i);
     end
 end
 if aceconducto==7
     for i=1:2
-    aceconductor(1,i)=T22(7,i)
+    aceconductor(1,i)=T22(7,i);
     end
 end
 if aceconducto==1
@@ -3106,47 +3088,47 @@ end
 %Atributo vial (probabilidad)
 %Acera-lado de conductor
 T22=[0 90;0.075 90;0.09 90;0.1 90;20 90;5 90;6 90];
-disp('1 = Barrera fisica')
-disp('2 = Separación no física >= 3.0 m')
-disp('3 = Separación no física 1.0 m a 3.0 m')
-disp('4 = Separación no física 0 m < 1.0 m')
-disp('5 = Ninguno')
-disp('6 = Camino informal ? 1.0 m')
-disp('7 = Camino informal de 0 m a <1.0 m')
+disp('1 = Barrera fisica');
+disp('2 = Separación no física >= 3.0 m');
+disp('3 = Separación no física 1.0 m a 3.0 m');
+disp('4 = Separación no física 0 m < 1.0 m');
+disp('5 = Ninguno');
+disp('6 = Camino informal ? 1.0 m');
+disp('7 = Camino informal de 0 m a <1.0 m');
 acecopilot=x(44);
 if acecopilot==1
     for i=1:2
-    acecopiloto(1,i)=T22(1,i)
+    acecopiloto(1,i)=T22(1,i);
     end
 end
 if acecopilot==2
     for i=1:2
-    acecopiloto(1,i)=T22(2,i)
+    acecopiloto(1,i)=T22(2,i);
     end
 end
 if acecopilot==3
     for i=1:2
-    acecopiloto(1,i)=T22(3,i)
+    acecopiloto(1,i)=T22(3,i);
     end
 end
 if acecopilot==4
     for i=1:2
-    acecopiloto(1,i)=T22(4,i)
+    acecopiloto(1,i)=T22(4,i);
     end
 end
 if acecopilot==5
     for i=1:2
-    acecopiloto(1,i)=T22(5,i)
+    acecopiloto(1,i)=T22(5,i);
     end
 end
 if acecopilot==6
     for i=1:2
-    acecopiloto(1,i)=T22(6,i)
+    acecopiloto(1,i)=T22(6,i);
     end
 end
 if acecopilot==7
     for i=1:2
-    acecopiloto(1,i)=T22(7,i)
+    acecopiloto(1,i)=T22(7,i);
     end
 end
 if acecopilot==1
@@ -3229,9 +3211,9 @@ elseif tipomedian==15
  tipomediana5=tipomediana(1,3);
 end
 %Calidad del cruce peatonal
-disp('1 = Adecuado')
-disp('2 = Pobre')
-disp('3 = No aplica')
+disp('1 = Adecuado');
+disp('2 = Pobre');
+disp('3 = No aplica');
 calicruc=x(40);
 if calicruc==1
     calicruce=1;
@@ -3275,13 +3257,13 @@ elseif tipointe==16
     tipointer7=tipointer(1,3);
 end
 %Vallas peatonales
-disp('1 = Presente')
-disp('2 = Ausente')
+disp('1 = Presente');
+disp('2 = Ausente');
 valla=x(42);
 if valla==1
-    vallap=1
+    vallap=1;
 elseif valla==2
-    vallap=1.25
+    vallap=1.25;
 end
 if alumbrad==1
     alumbrado3=alumbrado(1,2);
@@ -3298,7 +3280,7 @@ infcruceinsp1=90;
 U=ncarriles3*tipomediana5*infcrucep*calicruce*tipointer7*calinter*vallap*resdeslizamiento2*alumbrado3*distvisual*estveh*gestvelo*flujoy8*veloperacionpe*infcruceinsp1;
 %Cruce peatonal (vía lateral)
 %Via Inspeccionada
-infcrucepelat=x(41)
+infcrucepelat=x(41);
 if infcrucepelat==1 && supescolar==3
     infcrucepela=0.4;
 elseif infcrucepelat==2 && supescolar==3
@@ -3444,7 +3426,7 @@ elseif porpeatoncru>=2 && porpeatoncon>=2 && porpeatoncopi>=2 %Suma todos pero p
 end
 %Advertencia de zona escolar
 %zonaescolar=input('ingresar zona escolar')
-zonaescolar=x(47)
+zonaescolar=x(47);
 if zonaescolar==1
     zonaescola=0.90;
 elseif zonaescolar==2
