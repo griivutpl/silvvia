@@ -30,3 +30,9 @@ codegen/
 
 # Octave session info
 octave-workspace
+
+# archivos vbox
+*.vbo
+
+# archivos de vídeo
+*.avi
